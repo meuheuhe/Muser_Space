@@ -1,0 +1,52 @@
+ <div class="row first_row row_style">
+     <div class="row-header">
+        <h1 class="page-header header_style">
+            커버
+        </h1>
+        <ul class="genre-list">
+            <li><a href="#">발라드</a></li>
+            <li><a href="#">힙합</a></li>
+            <li><a href="#">댄스</a></li>
+        </ul>
+     </div>
+   
+    <div class="row list">
+      <% @cover.each do |s| %>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="list-wrap show-list-wrap">
+              <div class="thumbnail">
+                  <div class="list-show">
+                    <ul class="list-unstyled video-list-thumbs row">
+                    	<li class="col-12">
+                    		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                    			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                    			<span class="glyphicon glyphicon-play"></span>
+                    			<span class="duration">03:15</span>
+                    		</a>
+                    	</li>
+                    </ul>
+                  </div>
+                
+                <div class="caption">
+                  <ul>
+                    <!--<li><a href="" class="glyphicon glyphicon-play"></a></li>-->
+                    <!--<li><a href="" class="glyphicon glyphicon-plus"></a></li>-->
+                    <li><%= link_to '', cover_path(s.id), class: "glyphicon glyphicon-list-alt" %></li>
+                    <!--<li><a href="/category/songwriting_info" class="glyphicon glyphicon-list-alt"></a></li>-->
+                    <li><a href="" class="glyphicon glyphicon-heart"></a></li>
+                  </ul>
+                  <p><a href="#" class="list-title"><%= s.title %><!--제목--></a></p>
+                  <p><a href="#" class="list-singer"><%= s.content %><!--가수--></a></p>
+                  <p class="list-day">날짜/시간
+                  <%= "#{s.unique_impression_count}" %>
+                  </p>
+                </div>
+              </div> 
+            </div>
+            
+          </div>
+          
+        <!--</div>-->
+      <% end %>
+   </div>
+</div>

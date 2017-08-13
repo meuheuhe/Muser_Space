@@ -1,0 +1,2 @@
+module MymuserHelper
+end

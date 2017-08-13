@@ -1,0 +1,429 @@
+ <!--Page Heading -->
+<div class="row first_row row_style index-row">
+    <div class="row-header">
+        <h1 class="page-header header_style">
+            최신 음악
+        </h1>
+        <div role="tabpanel">
+        
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs nav-tabs_style" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">창작</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">커버</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">공연</a></li>
+          </ul>
+
+        </div>
+    </div>
+    <!-- Tab panes -->
+          <div class="tab-content new-music-content index-music-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+                
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row list crs-list">
+                          <% @songwriting.each do |s| %>
+                            <div class="col-6 col-md-4 col-lg-3">
+                              <div class="list-wrap">
+                                <div class="tdumbnail">
+                                  <a href="javascript:popupOpen();"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                  <div class="caption">
+                                    <p><a href="#"><%= s.title %></a></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <% end %>
+                       </div>
+                    </div>
+                  <% if @songwriting2.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @songwriting2.each do |s| %>
+                            <div class="col-6 col-md-4 col-lg-3">
+                              <div class="list-wrap">
+                                <div class="tdumbnail">
+                                  <a href="/category/songwrting_view"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                  <div class="caption">
+                                    <p><a href="#"><%= s.title %></a></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <% end %>
+                       </div>
+                    </div>
+                    <% end %>
+                  <% if @songwriting3.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @songwriting3.each do |s| %>
+                            <div class="col-6 col-md-4 col-lg-3">
+                              <div class="list-wrap">
+                                <div class="tdumbnail">
+                                  <a href="/category/songwrting_view"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                  <div class="caption">
+                                    <p><a href="#"><%= s.title %></a></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <% end %>
+                       </div>
+                    </div>
+                  <% end %>
+                  </div>
+                
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>    
+                
+            </div>
+            
+            <div role="tabpanel" class="tab-pane" id="profile">
+              
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+                
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row list crs-list">
+                          <% @cover.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%=s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% if @cover2.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @cover2.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% end %>
+                    <% if @cover3.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @cover3.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% end %>
+                  </div>
+                
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>               
+              
+            </div>
+            
+            <div role="tabpanel" class="tab-pane" id="messages">
+              
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+                
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row list crs-list">
+                          <% @show.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% if @show2.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @show2.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% end %>
+                    <% if @show3.count > 0 %>
+                    <div class="item">
+                        <div class="row list crs-list">
+                          <% @show3.each do |s| %>
+                          <div class="col-6 col-md-6 col-lg-4">
+                            <div class="list-wrap show-list-wrap">
+                                <div class="thumbnail">
+                                    <div class="list-show">
+                                      <ul class="list-unstyled video-list-thumbs row">
+                                      	<li class="col-12">
+                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<span class="glyphicon glyphicon-play"></span>
+                                      			<span class="duration">03:15</span>
+                                      		</a>
+                                      	</li>
+                                      </ul>
+                                    </div>
+                                  <div class="caption">
+                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                  </div>
+                                </div> 
+                              </div>
+                            </div>
+                          <!--</div>-->
+                          <% end %>
+                       </div>
+                    </div>
+                    <% end %>
+                  </div>
+                
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div> 
+              
+            </div>
+          </div>
+</div>
+ <!--/.row -->
+<!-- row-2-chart -->
+<div class="row chart_style">
+  <div class="row-wrap row-left">
+    <div class="row-header">
+      <h1 class="page-header header_style">
+        뮤즈 차트
+      </h1>
+      <div class="header-detail">
+        <a href="">더보기
+        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+    <div class="row-content-chart">
+      <script>
+
+
+// function popupOpen(){
+
+// 	var popUrl = "/category/songwriting_view";
+
+// 	var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no, toolbar = no, directories = no;";    
+
+// 		window.open(popUrl,"",popOption);
+
+// 	}
+
+
+</script>
+
+      <table class="table table-hover">
+      <% for num in 1..10 %>
+        <tr>
+          <td class="td-1"><a href=""><%= num %></a></td>
+          <td class="td-2">
+            <% if num==1 %>
+            <a href=""><img src="http://via.placeholder.com/70x70" alt="앨범이미지"></a>
+            <% end %>
+            <a href="category/songwriting_info">비도 오고 그래서 (Feat. 신용재)</a></td>
+          <td class="td-3"><a href="">헤이즈(HEIZE)</a></td>
+          <td class="td-4">
+            <a href="javascript:popupOpen();"><span class="glyphicon glyphicon-play mini-list"></span></a>
+            <a href=""><span class="glyphicon glyphicon-plus mini-list"></span></a>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="row-wrap row-right">
+    <div class="row-header">
+      <h1 class="page-header header_style">
+        인기 영상
+      </h1>
+      <div class="header-detail">
+        <a href="">더보기
+        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <ul class="list-unstyled video-list-thumbs row">
+      	<li class="col-12 col-lg-6">
+      		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+      			<h2>공연제목</h2>
+      			<h2 class="h2-sec">공연자</h2>
+      			<span class="glyphicon glyphicon-play"></span>
+      			<span class="duration">03:15</span>
+      		</a>
+      	</li>
+      	<li class="col-12 col-lg-6">
+      		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+      			<h2>공연제목</h2>
+      			<h2 class="h2-sec">공연자</h2>
+      			<span class="glyphicon glyphicon-play"></span>
+      			<span class="duration">03:15</span>
+      		</a>
+      	</li>
+      	<li class="col-12 col-lg-6">
+      		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+      			<h2>공연제목</h2>
+      			<h2 class="h2-sec">공연자</h2>
+      			<span class="glyphicon glyphicon-play"></span>
+      			<span class="duration">03:15</span>
+      		</a>
+      	</li>
+      	<li class="col-12 col-lg-6">
+      		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+      			<h2>공연제목</h2>
+      			<h2 class="h2-sec">공연자</h2>
+      			<span class="glyphicon glyphicon-play"></span>
+      			<span class="duration">03:15</span>
+      		</a>
+      	</li>
+      </ul>
+  </div>
+  
+</div>
+
+<!--/row-2-chart-->
+

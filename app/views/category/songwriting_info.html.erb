@@ -1,0 +1,148 @@
+<div class="row first_row">
+    <div class="player-container">
+        <div class="coverImageBackground" style="background-image: url('/assets/album.jpg');"></div>
+        <div class="centeredPlayerWrapper">
+            <div class="musicBoxCentered">
+                <div class="musicInfo">
+                        
+                
+                    <div id="d1_trackNameLabel" class="musicTrackName"><%= @songwriting.title%></div>
+                    <div id="d1_artistLabel" class="musicTrackArtist">헤이즈(Heize)</div>
+                     <div class="musicButtonField">
+                         <div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>
+                         <div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>
+                         <div class="musicButtonHeart">
+                             <span class="glyphicon glyphicon-heart heart-ch1"></span>
+                             <span class="heart-ch2">
+                                 <% if current_user.like?(@songwriting) %>
+                                     <a href="/like_cancel/<%= @songwriting.id %>"><%= @songwriting.likes.size %></a>
+                                 <% else %>
+                                     <a href="/like/<%= @songwriting.id %>"><%= @songwriting.likes.size %></a>
+                                 <% end %>
+                            </span>
+                        </div>
+                         <div class="musicButtonMyMuser">My뮤저</div>
+                     </div>
+                     
+                     <div class="musicContent">
+                         <p><%= @songwriting.content %></p>
+                     </div>
+                </div>
+            <img class="coverImageBig" src="/assets/album.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 댓글, 가사 -->
+<div class="row" style="border:1px solid black;">
+    <div class="music-comment" style="border:1px solid black;">
+        <div class="panel panel-default comment-panel">
+          <div class="panel-body comment-body">
+            <h4>감상평을 남겨주세요 !</h4>
+          </div>
+          
+          <table class="table comment-table">
+            <tr>
+                <th>
+                    <input type="text" class="form-control comment-text" placeholder="댓글을 작성해주세요">
+                    <input type="submit" class="btn btn-default btn-search btn-comment-submit" value="comment">
+                </th>
+            </tr>
+        <% for num in 1..10 %>
+            <tr>
+                <td>
+                    <div class="media comment-list-media">
+                      <div class="media-left media-middle">
+                        <a href="#">
+                          <img class="media-object img-circle" src="http://via.placeholder.com/50x50" alt="프로필사진">
+                        </a>
+                      </div>
+                      <div class="media-body comment-list">
+                        <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
+                        <span class="comment-day" style="border:1px solid black;">17.08.08</span>
+                        <div class="comment-wrap" style="border:1px solid black;">
+                            <p class="comment-content" style="border:1px solid black;">댓글내용</p>
+                            <div class="comment-button" style="border:1px solid black;">
+                                <a href="">수정</a>
+                                <a href="">삭제</a>
+                            </div>
+                        </div>
+                      </div>
+                    </div>                    
+                </td>
+            </tr>
+        <% end %>
+          </table>
+        </div>
+    </div>
+    
+    <div class="music-lyrics" style="border:1px solid black;">
+        <div class="panel panel-default lyrics-panel">
+          <div class="panel-heading">가사</div>
+          <div class="panel-body lyrics-body">
+            <pre class="lyrics-content">
+비도 오고 그래서
+네 생각이 났어
+생각이 나서 그래서
+그랬던거지
+별 의미 없지
+오늘은 오랜만에
+네 생각을 하는 날이야
+일부러 난 너와 내가
+담겨 있는 노랠 찾아
+오늘은 슬프거나
+우울해도 괜찮은 맘이야
+어차피 이 밤이
+다 지나가면은 별 수도 없이
+난 또 한 동안은 널 잊고 살테니까
+내 가슴 속에만
+품고 살아갈테니까
+비도 오고 그래서
+네 생각이 났어
+생각이 나서 그래서
+그랬던거지
+별 의미 없지
+우산 속에 숨어서
+네 집을 지나쳐
+그 날의 감정을
+다시 느껴보고파서
+떨어지는 빗물과
+시계 초침 소리가
+방 안 가득 채우면
+그 때로 난 돌아가
+차라리 난 이 비가
+그치지 않았음 해
+매일 기억 속에 살 수 있게
+나 널 아프게 했던
+못난 놈이니까
+널 다시 품에 안을
+자격도 없으니까
+비도 오고 그래서
+네 생각이 났어
+생각이 나서 그래서
+그랬던거지
+별 의미 없지
+우산 속에 숨어서
+네 집을 지나쳐
+그 날의 감정을
+다시 느껴보고파서
+우리에게 주어진 행복을
+너무 빨리 쓴 것 같아
+거기까지 인 것 같아
+이 비가 그칠 땐 각자 있던 곳에서
+다시 살아가야만 해
+비도 오고 그래서
+네 생각이 났어
+생각이 나서 그래서
+그랬던거지
+별 의미 없지
+우산 속에 숨어서
+네 집을 지나쳐
+그 날의 감정을
+다시 느껴보고파서
+            </pre>
+        </div>
+</div>
+    </div>
+</div>

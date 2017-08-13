@@ -1,0 +1,119 @@
+<div class="row first_row row_style" style="border: 1px solid black;">
+    <div class="row-header">
+        <h1 class="page-header header_style">
+            업로드
+        </h1>
+        <div role="tabpanel">
+        
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs nav-tabs_style" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">창작</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">커버</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">공연</a></li>
+          </ul>
+
+        </div>
+    </div>
+    <!-- Tab panes -->
+      <div class="tab-content new-music-content">
+        
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="row div_devise">
+              <div>
+                <h2>창작 업로드</h2>
+                <div>
+                <%= form_for @songwriting do |f| %> 
+                <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                <input type="hidden" name="user_email" value="<%= current_user.email %>">
+                <input type="hidden" name="user_name" value="<%= current_user.name %>">
+                <input type="hidden" name="ranking_point" value="<%= current_user.name %>">
+                  <div class="field field_style">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :title %>
+                  </div>
+                  <div class="field field_style">
+                    <%= f.label :content %><br />
+                    <%= f.text_area :content %>
+                  </div>
+                  <div class="actions field_style">
+                    <%= f.submit "Upload" %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>            
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="row div_devise">
+              <div>
+                <h2>커버 업로드</h2>
+                <div>
+                <%= form_for @cover do |f| %>
+                  <div class="field field_style">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :title %>
+                  </div>
+                  <div class="field field_style">
+                    <%= f.label :content %><br />
+                    <%= f.text_area :content %>
+                  </div>
+                  <div class="actions field_style">
+                    <%= f.submit "Upload" %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>                 
+        </div>
+        
+        <div role="tabpanel" class="tab-pane" id="messages">
+            <div class="row div_devise">
+              <div>
+                <h2>공연 업로드</h2>
+                <div>
+                <%= form_for @show do |f| %>
+                  <div class="field field_style">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :title %>
+                  </div>
+                  <div class="field field_style">
+                    <%= f.label :content %><br />
+                    <%= f.text_area :content %>
+                  </div>
+                  <div class="actions field_style">
+                    <%= f.submit "Upload" %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>                 
+        </div>
+        
+      </div>
+</div>
+
+
+<!--<div style = "position: relative; left: 300px; top: 500px;">-->
+<!--<%= form_for @songwriting do |f| %>-->
+<!--<%= f.text_field :title %>-->
+<!--<%= f.text_area :content %>-->
+<!--<%= f.submit 'Upload' %>-->
+<!--<% end %>-->
+<!--</div>-->
+
+<!--<div style = "position: relative; left: 300px; top: 500px;">-->
+<!--<%= form_for @cover do |f| %>-->
+<!--<%= f.text_field :title %>-->
+<!--<%= f.text_area :content %>-->
+<!--<%= f.submit 'Upload' %> -->
+<!--<% end %>-->
+<!--</div>-->
+
+<!--<div style = "position: relative; left: 300px; top: 500px;">-->
+<!--<%= form_for @show do |f| %>-->
+<!--<%= f.text_field :title %>-->
+<!--<%= f.text_area :content %>-->
+<!--<%= f.submit 'Upload' %>-->
+<!--<% end %>-->
+<!--</div>-->

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Custom CSS-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></head>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+  <!--createview-->
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top navbar-style" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/home/index"><img src="/assets/logo.png" alt="muser-space-logo"></a>
+                <!-- Search -->
+                <div class="search-form">
+                    <%= form_tag("/home/result", method: "get", class: "form-inline") do %>
+                        <div class="form-group has-success has-feedback">
+                    <%= text_field_tag(:query) %>
+                        </div>
+                  <div class="actions field_style btn-search-wrap">
+                    <%= submit_tag("search", :class => "btn btn-default field_appbtn btn-search") %>
+                    
+                  </div>
+    
+                    
+                <% end %>
+                </div>
+
+                
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>노래제목</strong>
+                                        </h5>
+                                        <p>가수이름</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                          가수이름
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                          가수이름
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                          가수이름
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">리스트 편집하기</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <% if user_signed_in? %>
+                            <%= current_user.name %>
+                            <b class="caret"></b>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                </li>
+                            </ul>
+                            
+                        <% else %>
+                            guest
+                        <% end %>
+                        </a>
+                </li>
+            </ul>
+            
+            <!-- Upload Button -->
+            <a class="btn btn-default btn-upload" href="/home/upload" role="button">Upload</a>            
+
+            
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                  <ul class="nav navbar-nav side-nav navbar-right-style">
+                  
+                   <% if user_signed_in? %>
+                    <div class="profile">
+                        <% unless current_user.avatar.url.nil? %>
+                            <div class="card-image"> <img src="#{current_user.picture.thumb.url}" /> </div> 
+                        <% else %>
+                            <div><img src="http://via.placeholder.com/70x70" alt="프로필없음" class="img-circle"></div>
+                        <% end %>                        
+                        <p><b><%= current_user.name %>님</b>, 환영합니다 ! </p>
+                        <div>
+                            <!--<a href="#"><button type="button" class="btn btn-primary profile-profile-btn">MY SPACE</button></a>                    -->
+                        <div class="actions field_style">
+                          <a href="/history/index"><button type="button" class="field_appbtn">my page</button></a>
+                        </div>
+
+                            <!--<a href="#"><button type="button" class="btn btn-primary profile-login-btn">멀까</button></a>-->
+                        </div>
+                        <div class="login-info">
+                            <a href="/users/edit" class="profile-a">프로필편집</a>
+                            <a href="/users/sign_out" class="profile-a">로그아웃</a>
+                        </div>
+                    </div>
+
+                   <% else %>
+                   <div class="profile">
+                       <!--<p>no login</p>-->
+                       <p>로그인 후 이용해주세요!</p>
+                       <div class="actions field_style">
+                           <a href="/users/sign_in"><button type="button" class="field_appbtn">login</button></a>
+                           <a href="/users/sign_up"><button type="button" class="field_appbtn">join</button></a>
+                       </div>
+                       <a href="" class="profile-a">아이디/비밀번호찾기</a>
+                    </div>
+                   <% end %>
+
+                    
+                    <li>
+                      <a href="/category/songwriting"><i class="fa fa-fw fa-dashboard"></i> 창작</a>
+                    </li>
+                    <li>
+                        <a href="/category/cover"><i class="fa fa-fw fa-bar-chart-o"></i> 커버</a>
+                    </li>
+                    <li>
+                        <a href="/category/show"><i class="fa fa-fw fa-table"></i> 공연</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>뮤저 차트 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="/muserchart/index">뮤즈 차트</a>
+                            </li>
+                            <li>
+                                <a href="#">뮤즈 추천</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> My 페이지 <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                <a href="/history/myspace">My 스페이스</a>
+                            </li>
+                            <li>
+                                <a href="/history/mymuser">My 뮤저</a>
+                            </li>
+                            <li>
+                                <a href="/history/myheart">My 관심</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid container_style">
+              <%= yield %>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div style="position: relative; top: 500px; left: 300px;">
+<h2>송라이팅</h2>
+<h3> 
+<% @songwriting.each do |s|%>
+    <%= s.title%>
+    <%= s.content%>
+<% end %></h3>
+
+
+
+
+<h2>커버</h2>
+<h3><% @cover.each do |c|%>
+    <%= c.title %>
+    <%= c.content %>
+<% end %></h3>
+  
+  
+<h2>쇼</h2>
+<h3><% @show.each do |s| %>
+    <%= s.title %>
+    <%= s.content %>
+<% end %></h3>
+</div>

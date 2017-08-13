@@ -1,0 +1,91 @@
+<div class="row first_row">
+    <div class="player-container">
+        <div class="coverImageBackground" style="background-image: url('/assets/thumbimg.jpg');"></div>
+        <div class="centeredPlayerWrapper">
+            <div class="musicBoxCentered">
+                <div class="musicInfo">
+                    <% @cover.each do |p| %>
+                    <div id="d1_trackNameLabel" class="musicTrackName">커버제목</div>
+                    <div id="d1_artistLabel" class="musicTrackArtist">커버자</div>
+                     <div class="musicButtonField">
+                         <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>-->
+                         <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>-->
+                         <div class="musicButtonHeart">
+                                     <% if current_user.like?(p) %>
+                                 <a href="/like_cancel/<%= p.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"></span></a><span><%= p.likes.size %></span>
+                             <% else %>
+                                 <a href="/like/<%= p.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"></span></a><span><%= p.likes.size %></span>
+                                 <% end %></div>
+                         <div class="musicButtonMyMuser">My뮤저</div>
+                     </div>
+                     <div class="musicContent">
+                         <p>커버곡들어주세용</p>
+                     </div>
+                </div>
+
+            <% end %>
+            <!--<img class="coverImageBig" src="/assets/album.jpg">-->
+                <div class="show-video-wrap">
+                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}">
+                        <source src="/assets/examplevideo.mp4" type='video/mp4'>
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                    </video>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 댓글, 가사 -->
+<div class="row" style="border:1px solid black;">
+    <div class="music-comment" style="border:1px solid black;">
+        <div class="panel panel-default comment-panel">
+          <div class="panel-body comment-body">
+            <h4>감상평을 남겨주세요 !</h4>
+          </div>
+          
+          <table class="table comment-table">
+            <tr>
+                <th>
+                    <input type="text" class="form-control comment-text" placeholder="댓글을 작성해주세요">
+                    <input type="submit" class="btn btn-default btn-search btn-comment-submit" value="comment">
+                </th>
+            </tr>
+        <% for num in 1..10 %>
+            <tr>
+                <td>
+                    <div class="media comment-list-media">
+                      <div class="media-left media-middle">
+                        <a href="#">
+                          <img class="media-object img-circle" src="http://via.placeholder.com/50x50" alt="프로필사진">
+                        </a>
+                      </div>
+                      <div class="media-body comment-list">
+                        <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
+                        <span class="comment-day" style="border:1px solid black;">17.08.08</span>
+                        <div class="comment-wrap" style="border:1px solid black;">
+                            <p class="comment-content" style="border:1px solid black;">댓글내용</p>
+                            <div class="comment-button" style="border:1px solid black;">
+                                <a href="">수정</a>
+                                <a href="">삭제</a>
+                            </div>
+                        </div>
+                      </div>
+                    </div>                    
+                </td>
+            </tr>
+        <% end %>
+          </table>
+        </div>
+    </div>
+    <div class="music-lyrics" style="border:1px solid black;">
+        <div class="panel panel-default lyrics-panel">
+          <div class="panel-heading">가사</div>
+          <div class="panel-body lyrics-body">
+            <pre class="lyrics-content">
+
+            </pre>
+        </div>
+</div>
+    </div>
+</div>

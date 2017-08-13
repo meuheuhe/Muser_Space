@@ -1,0 +1,88 @@
+<!--My Muser-->
+<div class="row row_style first_row">
+ <div class="row-header">
+    <h1 class="page-header header_style">
+        My 뮤저
+    </h1>
+    <div role="tabpanel">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs nav-tabs_style" role="tablist">
+            <li role="presentation" class="active"><a href="#my_all" aria-controls="my_all" role="tab" data-toggle="tab">전체</a></li>
+            <li role="presentation"><a href="#my_create" aria-controls="my_create" role="tab" data-toggle="tab">창작</a></li>
+            <li role="presentation"><a href="#my_cover" aria-controls="my_cover" role="tab" data-toggle="tab">커버</a></li>
+            <li role="presentation"><a href="#my_show" aria-controls="my_show" role="tab" data-toggle="tab">공연</a></li>
+          </ul>
+        </div>
+ </div>
+</div>
+
+<div class="row history-row">
+    <div class="history-profile-wrap">
+        <div class="tab-content new-music-content">
+            <div role="tabpanel" class="tab-pane active" id="my_all">
+                <div class="row list">
+                  <% for num in 1..8 %>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <div class="list-wrap">
+                        <div class="thumbnail muser-thumbnail">
+                          <a href=""><img src="http://via.placeholder.com/150x150" alt="프로필" class="img-circle"></a>
+                          <div class="caption">
+                            <p class="muser-p"><a href="#" class="list-title">제목</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+               </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="my_create">
+                <div class="row list">
+                  <% for num in 1..8 %>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <div class="list-wrap">
+                        <div class="thumbnail muser-thumbnail">
+                          <a href=""><img src="http://via.placeholder.com/150x150" alt="프로필" class="img-circle"></a>
+                          <div class="caption">
+                            <p class="muser-p"><a href="#" class="list-title">제목</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+               </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="my_cover">
+                <div class="row list">
+                  <% for num in 1..8 %>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <div class="list-wrap">
+                        <div class="thumbnail muser-thumbnail">
+                          <a href=""><img src="http://via.placeholder.com/150x150" alt="프로필" class="img-circle"></a>
+                          <div class="caption">
+                            <p class="muser-p"><a href="#" class="list-title">제목</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+               </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="my_show">
+                <div class="row list">
+                  <% for num in 1..8 %>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <div class="list-wrap">
+                        <div class="thumbnail muser-thumbnail">
+                          <a href=""><img src="http://via.placeholder.com/150x150" alt="프로필" class="img-circle"></a>
+                          <div class="caption">
+                            <p class="muser-p"><a href="#" class="list-title">제목</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
