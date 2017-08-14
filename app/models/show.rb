@@ -1,7 +1,7 @@
 class Show < ActiveRecord::Base
-    has_many :likes
+    has_many :like3s
     belongs_to :user
-    has_many :comments
+    has_many :s_comments
     has_many :impressions, :as=>:impressionable
  
     def impression_count

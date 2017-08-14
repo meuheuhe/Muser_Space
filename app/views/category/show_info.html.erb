@@ -11,11 +11,14 @@
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>-->
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>-->
                         <div class="musicButtonHeart">
-                                     <% if current_user.like?(@show) %>
-                                 <a href="/like_cancel/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"></span></a><span><%= @show.likes.size %></span>
-                             <% else %>
-                                 <a href="/like/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"></span></a><span><%= @show.likes.size %></span>
-                                 <% end %></div>
+                                 <% if current_user.like3?(@show) %>
+                                     <a href="/like3_cancel/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                                 <% else %>
+                                     <a href="/like3/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                                 <% end %>
+                             
+                             <span class="heart-ch2"><%= @show.like3s.size %></span>
+                        </div>
                         <div class="musicButtonMyMuser">My뮤저</div>
                      </div>
                      <div class="musicContent showContent">
@@ -46,13 +49,15 @@
           <table class="table comment-table">
             <tr>
                 <th>
-                    <input type="text" class="form-control comment-text" placeholder="댓글을 작성해주세요">
-                    <input type="submit" class="btn btn-default btn-search btn-comment-submit" value="comment">
+                    <%= form_tag("/category/s_comment_create/#{@show.id}", method: "post") do %>
+                    <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
+                    <%= submit_tag "Comment", class: 'btn btn-default btn-search btn-comment-submit'%>
+                    <% end %>
                 </th>
             </tr>
-        <% for num in 1..10 %>
             <tr>
                 <td>
+                    <% @show.s_comments.each do |s| %>
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">
@@ -63,17 +68,17 @@
                         <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
                         <span class="comment-day" style="border:1px solid black;">17.08.08</span>
                         <div class="comment-wrap" style="border:1px solid black;">
-                            <p class="comment-content" style="border:1px solid black;">댓글내용</p>
+                            <p class="comment-content" style="border:1px solid black;"><%=s.content%></p>
                             <div class="comment-button" style="border:1px solid black;">
-                                <a href="">수정</a>
-                                <a href="">삭제</a>
+                                <a href="/category/s_comment_destroy/<%= s.id %>">삭제</a>
                             </div>
                         </div>
                       </div>
                     </div>                    
+                    <% end %>
                 </td>
             </tr>
-        <% end %>
+
           </table>
         </div>
     </div>

@@ -58,22 +58,23 @@ Rails.application.routes.draw do
   get '/like/:id' => 'category#like'
   get '/like_cancel/:id' => 'category#like_cancel'
   
-  get '/like_cover/:id' => 'category#like_cover'
-  get '/like_cancel_cover/:id' => 'category#like_cancel_cover'
+  get '/like2/:id' => 'category#like2'
+  get '/like2_cancel/:id' => 'category#like2_cancel'
   
-  get '/like_show/:id' => 'category#like_show'
-  get '/like_cancel_show/:id' => 'category#like_cancel_show'
+  get '/like3/:id' => 'category#like3'
+  get '/like3_cancel/:id' => 'category#like3_cancel'
   
   
   
   #comment
-  post 'category/comment_create/:songwriting_id' => 'category#comment_create'
-  post 'category/comment_create/:show_id' => 'category#comment_create'
-  post 'category/comment_create/:cover_id' => 'category#comment_create'
   
-  get 'category/content/:songwriting_id' => 'category#content'
-  get 'category/content/:cover_id' => 'category#content'
-  get 'category/content/:show_id' => 'category#content'
+  post 'category/sw_comment_create/:songwriting_id' => 'category#sw_comment_create'
+  post 'category/c_comment_create/:cover_id' => 'category#c_comment_create'
+  post 'category/s_comment_create/:show_id' => 'category#s_comment_create'
+  
+  get 'category/sw_comment_destroy/:songwriting_id' => 'category#sw_comment_destroy'
+  get 'category/c_comment_destroy/:cover_id' => 'category#c_comment_destroy'
+  get 'category/s_comment_destroy/:show_id' => 'category#s_comment_destroy'
   
   
 

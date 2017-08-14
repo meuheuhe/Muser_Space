@@ -1,10 +1,10 @@
-class CreateLikes < ActiveRecord::Migration
+class CreateSwComments < ActiveRecord::Migration
   def change
-    create_table :likes do |t|
-      
+    create_table :sw_comments do |t|
+      t.string :content
       t.integer :user_id
+      
       t.integer :songwriting_id
-
       t.timestamps null: false
     end
   end

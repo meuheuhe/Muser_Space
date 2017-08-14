@@ -28,22 +28,44 @@ class CategoryController < ApplicationController
   end
   
   def cover_info
-    @cover = Cover.all
+    @cover = Cover.find(params[:id])
   end
   
   def show_info
-    @show = Show.all
-    
-    
-  end
-    def comment_create
-    @comment= Comment.new(songwriting_id: params[:id], content: params[:content])  
+    @show = Show.find(params[:id])
   end
   
-  def comment_destroy
-    @cd=Comment.find(params[:id])
+  def sw_comment_create
+    @comment= SwComment.create(songwriting_id: params[:songwriting_id], content: params[:content]) 
+    redirect_to :back
+  end
+  
+  def sw_comment_destroy
+    @cd = SwComment.find(params[:songwriting_id])
     @cd.destroy
+    redirect_to :back
+  end
   
+  def c_comment_create
+    @comment= CComment.create(cover_id: params[:cover_id], content: params[:content]) 
+    redirect_to :back
+  end
+  
+  def c_comment_destroy
+    @cd = CComment.find(params[:cover_id])
+    @cd.destroy
+    redirect_to :back
+  end
+  
+  def s_comment_create
+    @comment= SComment.create(show_id: params[:show_id], content: params[:content]) 
+    redirect_to :back
+  end
+  
+  def s_comment_destroy
+    @cd = SComment.find(params[:show_id])
+    @cd.destroy
+    redirect_to :back
   end
   
   
@@ -56,22 +78,22 @@ class CategoryController < ApplicationController
     Like.find_by(user_id: current_user.id, songwriting_id: params[:id]).destroy
     redirect_to :back
   end
-  def like_cover
-    Like.create(user_id: current_user.id, cover_id: params[:id])
+  def like2
+    Like2.create(user_id: current_user.id, cover_id: params[:id])
     redirect_to :back
   end
     
-  def like_cancel_cover
-    Like.find_by(user_id: current_user.id, cover_id: params[:id]).destroy
+  def like2_cancel
+    Like2.find_by(user_id: current_user.id, cover_id: params[:id]).destroy
     redirect_to :back
   end
-  def like_show
-    Like.create(user_id: current_user.id, show_id: params[:id])
+  def like3
+    Like3.create(user_id: current_user.id, show_id: params[:id])
     redirect_to :back
   end
     
-  def like_cancel_show
-    Like.find_by(user_id: current_user.id, show_id: params[:id]).destroy
+  def like3_cancel
+    Like3.find_by(user_id: current_user.id, show_id: params[:id]).destroy
     redirect_to :back
   end
 

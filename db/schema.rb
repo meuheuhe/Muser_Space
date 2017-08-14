@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814051525) do
+ActiveRecord::Schema.define(version: 20170814102751) do
+
+  create_table "c_comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "cover_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -56,6 +64,20 @@ ActiveRecord::Schema.define(version: 20170814051525) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
 
+  create_table "like2s", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "cover_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "like3s", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "songwriting_id"
@@ -63,6 +85,14 @@ ActiveRecord::Schema.define(version: 20170814051525) do
     t.integer  "show_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "s_comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shows", force: :cascade do |t|
@@ -84,6 +114,13 @@ ActiveRecord::Schema.define(version: 20170814051525) do
     t.string   "user_name"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "sw_comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "songwriting_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

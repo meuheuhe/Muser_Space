@@ -1,7 +1,7 @@
 class Cover < ActiveRecord::Base
-    has_many :likes
+    has_many :like2s
     belongs_to :user
-    has_many :comments
+    has_many :c_comments
 
     has_many :impressions, :as=>:impressionable
 

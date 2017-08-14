@@ -12,14 +12,13 @@
                          <div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>
                          <div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>
                          <div class="musicButtonHeart">
-                             <span class="glyphicon glyphicon-heart heart-ch1"></span>
-                             <span class="heart-ch2">
                                  <% if current_user.like?(@songwriting) %>
-                                     <a href="/like_cancel/<%= @songwriting.id %>"><%= @songwriting.likes.size %></a>
+                                     <a href="/like_cancel/<%= @songwriting.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
                                  <% else %>
-                                     <a href="/like/<%= @songwriting.id %>"><%= @songwriting.likes.size %></a>
+                                     <a href="/like/<%= @songwriting.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
                                  <% end %>
-                            </span>
+                             
+                             <span class="heart-ch2"><%= @songwriting.likes.size %></span>
                         </div>
                          <div class="musicButtonMyMuser">My뮤저</div>
                      </div>
@@ -41,16 +40,21 @@
           <div class="panel-body comment-body">
             <h4>감상평을 남겨주세요 !</h4>
           </div>
-          
+            <!--댓글-->
+                        
           <table class="table comment-table">
+              
             <tr>
                 <th>
-                    <input type="text" class="form-control comment-text" placeholder="댓글을 작성해주세요">
-                    <input type="submit" class="btn btn-default btn-search btn-comment-submit" value="comment">
+                    <%= form_tag("/category/sw_comment_create/#{@songwriting.id}", method: "post") do %>
+                    <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
+                    <%= submit_tag "Comment", class: 'btn btn-default btn-search btn-comment-submit'%>
+                    <% end %>
                 </th>
             </tr>
             <tr>
                 <td>
+                    <% @songwriting.sw_comments.each do |c| %><br>
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">
@@ -58,25 +62,24 @@
                         </a>
                       </div>
                       <div class="media-body comment-list">
-                          <!--댓글-->
+                        
                         <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
                         <span class="comment-day" style="border:1px solid black;">17.08.08</span>
                         <div class="comment-wrap" style="border:1px solid black;">
                             <p class="comment-content" style="border:1px solid black;">
-                                <form action = '/category/comment_create/<%= @songwriting.content%>' method = 'post'>
+                                <%= c.content %>
                             </p>
                             <div class="comment-button" style="border:1px solid black;">
-                                <input type = 'text' name= 'content' placeholder= '댓글'>
-                                <input type = 'submit' value = '댓글'>
-                                <!--<a href="">수정</a>-->
-                                <!--<a href="">삭제</a>-->
-                            </form>
+                                
+                                <a href="/category/sw_comment_destroy/<%= c.id %>">삭제</a>
+                            
                             <!--댓글-->
                             
                             </div>
                         </div>
                       </div>
-                    </div>                    
+                    </div>
+                    <% end %>
                 </td>
             </tr>
 
