@@ -19,7 +19,15 @@ class CoversController < ApplicationController
     @cover.destroy
     redirect_to '/'
   end
+  def comment_create
+    @comment= Comment.new(cover_id: params[:id], content: params[:content])  
+  end
   
+  def comment_destroy
+    @cd=Comment.find(params[:id])
+    @cd.destroy
+  
+  end
 
 
 end

@@ -58,6 +58,23 @@ Rails.application.routes.draw do
   get '/like/:id' => 'category#like'
   get '/like_cancel/:id' => 'category#like_cancel'
   
+  get '/like_cover/:id' => 'category#like_cover'
+  get '/like_cancel_cover/:id' => 'category#like_cancel_cover'
+  
+  get '/like_show/:id' => 'category#like_show'
+  get '/like_cancel_show/:id' => 'category#like_cancel_show'
+  
+  
+  
+  #comment
+  post 'category/comment_create/:songwriting_id' => 'category#comment_create'
+  post 'category/comment_create/:show_id' => 'category#comment_create'
+  post 'category/comment_create/:cover_id' => 'category#comment_create'
+  
+  get 'category/content/:songwriting_id' => 'category#content'
+  get 'category/content/:cover_id' => 'category#content'
+  get 'category/content/:show_id' => 'category#content'
+  
   
 
 

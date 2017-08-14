@@ -36,14 +36,42 @@ class CategoryController < ApplicationController
     
     
   end
+    def comment_create
+    @comment= Comment.new(songwriting_id: params[:id], content: params[:content])  
+  end
   
-  def like 
+  def comment_destroy
+    @cd=Comment.find(params[:id])
+    @cd.destroy
+  
+  end
+  
+  
+  def like
     Like.create(user_id: current_user.id, songwriting_id: params[:id])
     redirect_to :back
   end
     
   def like_cancel
     Like.find_by(user_id: current_user.id, songwriting_id: params[:id]).destroy
+    redirect_to :back
+  end
+  def like_cover
+    Like.create(user_id: current_user.id, cover_id: params[:id])
+    redirect_to :back
+  end
+    
+  def like_cancel_cover
+    Like.find_by(user_id: current_user.id, cover_id: params[:id]).destroy
+    redirect_to :back
+  end
+  def like_show
+    Like.create(user_id: current_user.id, show_id: params[:id])
+    redirect_to :back
+  end
+    
+  def like_cancel_show
+    Like.find_by(user_id: current_user.id, show_id: params[:id]).destroy
     redirect_to :back
   end
 
