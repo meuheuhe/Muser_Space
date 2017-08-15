@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   def create
-    Show.create(title: params[:show][:title], content: params[:show][:content])
+    Show.create(title: params[:show][:title], content: params[:show][:content],
+                       user_id: params[:user_id], user_name: params[:user_name],
+                       user_email: params[:user_email])
     redirect_to '/'
   end
 

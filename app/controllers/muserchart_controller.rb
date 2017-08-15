@@ -2,13 +2,12 @@ class MuserchartController < ApplicationController
  
   def index
     @songwriting = Songwriting.all
-    @songwriting.each do |p|
-      p.ranking_point = p.likes.size #+ p.unique_impression_count
-    end
-    
-    @chart = @songwriting.order('ranking_point DESC')
+    @sw_chart = @songwriting.order('hits DESC')
     
     @cover = Cover.all
+    @c_chart = @cover.order('hits DESC')
+    
     @show = Show.all
+    @s_chart = @show.order('hits DESC')
   end
 end

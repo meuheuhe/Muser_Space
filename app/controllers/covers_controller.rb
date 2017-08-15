@@ -1,6 +1,8 @@
 class CoversController < ApplicationController
   def create
-    Cover.create(title: params[:cover][:title], content: params[:cover][:content])
+    Cover.create(title: params[:cover][:title], content: params[:cover][:content],
+                       user_id: params[:user_id], user_name: params[:user_name],
+                       user_email: params[:user_email])
     redirect_to '/'
   end
 

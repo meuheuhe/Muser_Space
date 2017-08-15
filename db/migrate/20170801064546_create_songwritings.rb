@@ -7,12 +7,14 @@ class CreateSongwritings < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.string :genre
-      t.integer :ranking_point, default: "0"
       
       #계정
       t.integer :user_id
       t.string :user_email
       t.string :user_name
+      
+      t.integer :hits
+      t.integer :likes_count
       
       t.timestamps null: false
     end

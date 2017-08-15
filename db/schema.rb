@@ -21,20 +21,19 @@ ActiveRecord::Schema.define(version: 20170814102751) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "songwriting_id"
-    t.integer  "show_id"
-    t.integer  "cover_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
   create_table "covers", force: :cascade do |t|
+    t.string   "album_pic"
+    t.string   "music"
     t.string   "title"
-    t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "content"
+    t.string   "genre"
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.string   "user_name"
+    t.integer  "hits"
+    t.integer  "likes_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -81,8 +80,6 @@ ActiveRecord::Schema.define(version: 20170814102751) do
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "songwriting_id"
-    t.integer  "cover_id"
-    t.integer  "show_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -96,10 +93,18 @@ ActiveRecord::Schema.define(version: 20170814102751) do
   end
 
   create_table "shows", force: :cascade do |t|
+    t.string   "album_pic"
+    t.string   "music"
     t.string   "title"
-    t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "content"
+    t.string   "genre"
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.string   "user_name"
+    t.integer  "hits"
+    t.integer  "likes_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "songwritings", force: :cascade do |t|
@@ -108,16 +113,18 @@ ActiveRecord::Schema.define(version: 20170814102751) do
     t.string   "title"
     t.text     "content"
     t.string   "genre"
-    t.integer  "ranking_point", default: 0
     t.integer  "user_id"
     t.string   "user_email"
     t.string   "user_name"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "hits"
+    t.integer  "likes_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sw_comments", force: :cascade do |t|
     t.string   "content"
+    t.integer  "user_id"
     t.integer  "songwriting_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

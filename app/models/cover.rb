@@ -4,7 +4,7 @@ class Cover < ActiveRecord::Base
     has_many :c_comments
 
     has_many :impressions, :as=>:impressionable
-
+      is_impressionable :counter_cache => true, :column_name => :hits
     def impression_count
         impressions.size
     end

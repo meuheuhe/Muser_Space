@@ -26,7 +26,6 @@
                 <input type="hidden" name="user_id" value="<%= current_user.id %>">
                 <input type="hidden" name="user_email" value="<%= current_user.email %>">
                 <input type="hidden" name="user_name" value="<%= current_user.name %>">
-                <input type="hidden" name="ranking_point" value="<%= current_user.name %>">
                   <div class="field field_style">
                     <%= f.label :name %><br />
                     <%= f.text_field :title %>
@@ -50,6 +49,9 @@
                 <h2>커버 업로드</h2>
                 <div>
                 <%= form_for @cover do |f| %>
+                <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                <input type="hidden" name="user_email" value="<%= current_user.email %>">
+                <input type="hidden" name="user_name" value="<%= current_user.name %>">
                   <div class="field field_style">
                     <%= f.label :name %><br />
                     <%= f.text_field :title %>
@@ -73,6 +75,9 @@
                 <h2>공연 업로드</h2>
                 <div>
                 <%= form_for @show do |f| %>
+                <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                <input type="hidden" name="user_email" value="<%= current_user.email %>">
+                <input type="hidden" name="user_name" value="<%= current_user.name %>">
                   <div class="field field_style">
                     <%= f.label :name %><br />
                     <%= f.text_field :title %>
@@ -92,28 +97,3 @@
         
       </div>
 </div>
-
-
-<!--<div style = "position: relative; left: 300px; top: 500px;">-->
-<!--<%= form_for @songwriting do |f| %>-->
-<!--<%= f.text_field :title %>-->
-<!--<%= f.text_area :content %>-->
-<!--<%= f.submit 'Upload' %>-->
-<!--<% end %>-->
-<!--</div>-->
-
-<!--<div style = "position: relative; left: 300px; top: 500px;">-->
-<!--<%= form_for @cover do |f| %>-->
-<!--<%= f.text_field :title %>-->
-<!--<%= f.text_area :content %>-->
-<!--<%= f.submit 'Upload' %> -->
-<!--<% end %>-->
-<!--</div>-->
-
-<!--<div style = "position: relative; left: 300px; top: 500px;">-->
-<!--<%= form_for @show do |f| %>-->
-<!--<%= f.text_field :title %>-->
-<!--<%= f.text_area :content %>-->
-<!--<%= f.submit 'Upload' %>-->
-<!--<% end %>-->
-<!--</div>-->

@@ -3,7 +3,7 @@ class Songwriting < ActiveRecord::Base
   belongs_to :user
   has_many :sw_comments
     has_many :impressions, :as=>:impressionable
- 
+     is_impressionable :counter_cache => true, :column_name => :hits
     def impression_count
         impressions.size
     end
