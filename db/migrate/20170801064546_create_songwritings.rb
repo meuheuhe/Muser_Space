@@ -7,6 +7,9 @@ class CreateSongwritings < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.string :genre
+      t.string :lyrics
+
+      
       
       #계정
       t.integer :user_id

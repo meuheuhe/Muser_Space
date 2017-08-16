@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170814102751) do
     t.string   "title"
     t.text     "content"
     t.string   "genre"
+    t.string   "lyrics"
     t.integer  "user_id"
     t.string   "user_email"
     t.string   "user_name"

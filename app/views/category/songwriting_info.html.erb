@@ -46,15 +46,17 @@
               
             <tr>
                 <th>
+
                     <%= form_tag("/category/sw_comment_create/#{@songwriting.id}", method: "post") do %>
                     <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
-                    <%= submit_tag "Comment", class: 'btn btn-default btn-search btn-comment-submit'%>
+                    <%= submit_tag "Comment", class: 'btn btn-default history-profile-edit btn-comment-submit'%>
                     <% end %>
+
                 </th>
             </tr>
             <tr>
                 <td>
-                    <% @songwriting.sw_comments.each do |c| %><br>
+                    <% @songwriting.sw_comments.order('created_at DESC').each do |c| %><br>
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">
@@ -63,7 +65,7 @@
                       </div>
                       <div class="media-body comment-list">
                         
-                        <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
+                        <span class="comment-writer" style="border:1px solid black;"><%= c.id%></span>
                         <span class="comment-day" style="border:1px solid black;">17.08.08</span>
                         <div class="comment-wrap" style="border:1px solid black;">
                             <p class="comment-content" style="border:1px solid black;">
@@ -73,6 +75,8 @@
                                 
                                 <a href="/category/sw_comment_destroy/<%= c.id %>">삭제</a>
                             
+
+
                             <!--댓글-->
                             
                             </div>

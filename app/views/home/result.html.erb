@@ -1,24 +1,126 @@
-<div style="position: relative; top: 500px; left: 300px;">
-<h2>송라이팅</h2>
-<h3> 
-<% @songwriting.each do |s|%>
-    <%= s.title%>
-    <%= s.content%>
-<% end %></h3>
+<div class="row history-row first_row">
+    <div class="history-profile-wrap result-wrap">
+        <h1><i class="fa fa-search" aria-hidden="true"></i>&nbsp;"<span><%=@query%></span>" 검색 결과</h1>
+    </div>
+</div>
 
+<div class="row row_style">
+ <div class="row-header">
+    <h1 class="page-header header_style">
+        창작
+    </h1>
+ </div>
+</div>
 
+<div class="row history-row">
+    <div class="history-profile-wrap">
+        
+        <div class="tab-content new-music-content">
+            <div role="tabpanel" class="tab-pane active" id="create">
+                <div class="row list">
+                  <% @songwriting.each do |s| %>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <div class="list-wrap">
+                        <div class="thumbnail">
+                          <a href="javascript:popupOpen();"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                          <div class="caption">
+                            <p><a href="#" class="list-title"><%= s.title %></a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+               </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
+<!--My Muser-->
+<div class="row row_style">
+ <div class="row-header">
+    <h1 class="page-header header_style">
+        커버
+    </h1>
+ </div>
+</div>
 
-<h2>커버</h2>
-<h3><% @cover.each do |c|%>
-    <%= c.title %>
-    <%= c.content %>
-<% end %></h3>
-  
-  
-<h2>쇼</h2>
-<h3><% @show.each do |s| %>
-    <%= s.title %>
-    <%= s.content %>
-<% end %></h3>
+<div class="row history-row">
+    <div class="history-profile-wrap">
+        <div class="tab-content new-music-content">
+            <div role="tabpanel" class="tab-pane active" id="like_cover">
+                <div class="row list">
+                  <% @cover.each do |c| %>
+                    <div class="col-6 col-md-6 col-lg-4">
+                      <div class="list-wrap show-list-wrap">
+                          <div class="thumbnail">
+                              <div class="list-show">
+                                <ul class="list-unstyled video-list-thumbs row">
+                                	<li class="col-12">
+                                		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                			<span class="glyphicon glyphicon-play"></span>
+                                			<span class="duration">03:15</span>
+                                		</a>
+                                	</li>
+                                </ul>
+                              </div>
+                            <div class="caption">
+                              <p><a href="#" class="list-title"><%= c.title %></a></p>
+                            </div>
+                          </div> 
+                        </div>
+                      </div>
+                    <!--</div>-->
+                  <% end %>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--my favorite-->
+<div class="row row_style">
+ <div class="row-header">
+    <h1 class="page-header header_style">
+        공연
+    </h1>
+ </div>
+</div>
+
+<div class="row history-row">
+    <div class="history-profile-wrap">
+        
+        <div class="tab-content new-music-content">
+            <div role="tabpanel" class="tab-pane active" id="like_cover">
+                <div class="row list">
+                  <% @show.each do |s| %>
+                    <div class="col-6 col-md-6 col-lg-4">
+                      <div class="list-wrap show-list-wrap">
+                          <div class="thumbnail">
+                              <div class="list-show">
+                                <ul class="list-unstyled video-list-thumbs row">
+                                	<li class="col-12">
+                                		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                			<span class="glyphicon glyphicon-play"></span>
+                                			<span class="duration">03:15</span>
+                                		</a>
+                                	</li>
+                                </ul>
+                              </div>
+                            <div class="caption">
+                              <p><a href="#" class="list-title"><%= s.title %></a></p>
+                            </div>
+                          </div> 
+                        </div>
+                      </div>
+                    <!--</div>-->
+                  <% end %>
+               </div>
+            </div>
+        </div>
+        
+    </div>
 </div>

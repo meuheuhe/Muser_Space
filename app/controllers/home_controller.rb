@@ -24,7 +24,7 @@ class HomeController < ApplicationController
     
   end
   def result
-
+    @query = params[:query]
     if params[:query].nil?
       @songwriting = Songwriting.all
       @cover = Cover.all

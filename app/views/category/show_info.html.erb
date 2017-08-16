@@ -51,13 +51,13 @@
                 <th>
                     <%= form_tag("/category/s_comment_create/#{@show.id}", method: "post") do %>
                     <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
-                    <%= submit_tag "Comment", class: 'btn btn-default btn-search btn-comment-submit'%>
+                    <%= submit_tag "Comment", class: 'btn btn-default history-profile-edit btn-comment-submit'%>
                     <% end %>
                 </th>
             </tr>
             <tr>
                 <td>
-                    <% @show.s_comments.each do |s| %>
+                    <% @show.s_comments.order('created_at DESC').each do |s| %>
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">

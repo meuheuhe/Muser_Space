@@ -34,10 +34,17 @@
                           <% @songwriting1.each do |s| %>
                             <div class="col-6 col-md-4 col-lg-3">
                               <div class="list-wrap">
-                                <div class="tdumbnail">
-                                  <a href="javascript:popupOpen();"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                <div class="thumbnail">
+                                  <a href="javascript:popupOpen();">
+                                      <div class="list-img-wrap">
+                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <div>
+                                              <i class="fa fa-music fa-2x" aria-hidden="true"></i>
+                                          </div>
+                                      </div>
+                                  </a>
                                   <div class="caption">
-                                    <p><a href="#"><%= s.title %></a></p>
+                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
                                   </div>
                                 </div>
                               </div>
@@ -51,10 +58,17 @@
                           <% @songwriting2.each do |s| %>
                             <div class="col-6 col-md-4 col-lg-3">
                               <div class="list-wrap">
-                                <div class="tdumbnail">
-                                  <a href="/category/songwrting_view"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                <div class="thumbnail">
+                                  <a href="javascript:popupOpen();">
+                                      <div class="list-img-wrap">
+                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <div>
+                                              <i class="fa fa-music fa-2x" aria-hidden="true"></i>
+                                          </div>
+                                      </div>
+                                  </a>
                                   <div class="caption">
-                                    <p><a href="#"><%= s.title %></a></p>
+                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
                                   </div>
                                 </div>
                               </div>
@@ -69,10 +83,17 @@
                           <% @songwriting3.each do |s| %>
                             <div class="col-6 col-md-4 col-lg-3">
                               <div class="list-wrap">
-                                <div class="tdumbnail">
-                                  <a href="/category/songwrting_view"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                                <div class="thumbnail">
+                                  <a href="javascript:popupOpen();">
+                                      <div class="list-img-wrap">
+                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <div>
+                                              <i class="fa fa-music fa-2x" aria-hidden="true"></i>
+                                          </div>
+                                      </div>
+                                  </a>
                                   <div class="caption">
-                                    <p><a href="#"><%= s.title %></a></p>
+                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
                                   </div>
                                 </div>
                               </div>
@@ -117,7 +138,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -126,7 +147,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%=s.title %></a></p>
+                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%=s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -145,7 +166,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -154,7 +175,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%= s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -174,7 +195,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -183,7 +204,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%= s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -229,7 +250,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -238,7 +259,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -257,7 +278,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -266,7 +287,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -286,7 +307,7 @@
                                     <div class="list-show">
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
-                                      		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                                      		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                       			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
@@ -295,7 +316,7 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="#" class="list-title"><%= s.title %></a></p>
+                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
                                   </div>
                                 </div> 
                               </div>
@@ -327,7 +348,7 @@
   <div class="row-wrap row-left">
     <div class="row-header">
       <h1 class="page-header header_style">
-        뮤저 차트
+        뮤즈 차트
       </h1>
       <div class="header-detail">
         <a href="">더보기

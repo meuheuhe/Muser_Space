@@ -5,16 +5,16 @@ class CategoryController < ApplicationController
     
 
   def songwriting
-    @songwriting = Songwriting.all
+    @songwriting = Songwriting.all.order('created_at DESC')
   end
 
   def cover
-    @cover = Cover.all
+    @cover = Cover.all.order('created_at DESC')
  
   end
 
   def show
-    @show = Show.all
+    @show = Show.all.order('created_at DESC')
       
   end
   
