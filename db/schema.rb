@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170814102751) do
     t.string   "content"
     t.string   "user_name"
     t.integer  "user_id"
+    t.string   "avatar"
     t.integer  "cover_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170814102751) do
     t.string   "content"
     t.string   "user_name"
     t.integer  "user_id"
+    t.string   "avatar"
     t.integer  "show_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
