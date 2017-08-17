@@ -3,11 +3,6 @@
         <h1 class="page-header header_style">
             커버
         </h1>
-        <ul class="genre-list">
-            <li><a href="#">발라드</a></li>
-            <li><a href="#">힙합</a></li>
-            <li><a href="#">댄스</a></li>
-        </ul>
      </div>
    
     <div class="row list">
@@ -19,7 +14,7 @@
                     <ul class="list-unstyled video-list-thumbs row">
                     	<li class="col-12">
                     		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                    			<img src="<%= s.cover_pic %>" alt="Barca" class="img-responsive video-img" width="280" height="160" />
                     			<span class="glyphicon glyphicon-play"></span>
                     			<span class="duration">03:15</span>
                     		</a>
@@ -36,9 +31,9 @@
                     <li><a href="" class="glyphicon glyphicon-heart"></a></li>
                   </ul>
                   <p><a href="#" class="list-title"><%= s.title %><!--제목--></a></p>
-                  <p><a href="#" class="list-singer"><%= s.content %><!--가수--></a></p>
-                  <p class="list-day">날짜/시간
-                  <%= "#{s.unique_impression_count}" %>
+                  <p><a href="#" class="list-singer"><%= s.user_name %><!--가수--></a></p>
+                  <p class="list-day"><%= s.updated_at %>
+                  <!--<%= "#{s.unique_impression_count}" %>-->
                   </p>
                 </div>
               </div> 

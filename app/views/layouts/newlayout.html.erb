@@ -651,18 +651,11 @@ Player.prototype = {
 };
 
 // Setup our new audio player class and pass it the playlist.
+
 var player = new Player([
   {
-    title: 'title',
-    file: 'https://s3.ap-northeast-2.amazonaws.com/coffeewaffle/uploads/like/1500811866.mp3',
-    howl: null
-  },  {
-    title: 'title',
-    file: 'https://s3.ap-northeast-2.amazonaws.com/coffeewaffle/uploads/like/1500811866.mp3',
-    howl: null
-  },  {
-    title: 'title',
-    file: 'https://s3.ap-northeast-2.amazonaws.com/coffeewaffle/uploads/like/1500811866.mp3',
+    title: '<%= @songwriting.title %>',
+    file: '<%= @songwriting.music %>',
     howl: null
   }
 ]);

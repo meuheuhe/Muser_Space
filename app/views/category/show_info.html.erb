@@ -1,6 +1,6 @@
 <div class="row first_row">
     <div class="player-container">
-        <div class="coverImageBackground" style="background-image: url('/assets/thumbimg.jpg');"></div>
+        <div class="coverImageBackground" style="background-image: url('<%= @show.show_pic %>');"></div>
         <div class="centeredPlayerWrapper">
             <div class="musicBoxCentered">
                 <div class="musicInfo">
@@ -10,15 +10,13 @@
                      <div class="musicButtonField">
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>-->
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>-->
-                        <div class="musicButtonHeart">
-                                 <% if current_user.like3?(@show) %>
-                                     <a href="/like3_cancel/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                        <% if current_user.like3?(@show) %>
+                                     <a href="/like3_cancel/<%= @show.id %>">
+                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @show.like3s.size %></span></div></a>
                                  <% else %>
-                                     <a href="/like3/<%= @show.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                                     <a href="/like3/<%= @show.id %>">
+                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @show.like3s.size %></span></div></a>
                                  <% end %>
-                             
-                             <span class="heart-ch2"><%= @show.like3s.size %></span>
-                        </div>
                         <div class="musicButtonMyMuser">My뮤저</div>
                      </div>
                      <div class="musicContent showContent">
@@ -26,9 +24,8 @@
                      </div>
                 </div>
 
-            <!--<img class="coverImageBig" src="/assets/album.jpg">-->
                 <div class="show-video-wrap">
-                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}">
+                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}" poster="<%= @show.show_pic %>">
                         <source src="/assets/examplevideo.mp4" type='video/mp4'>
                         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                     </video>    
@@ -39,8 +36,8 @@
 </div>
 
 <!-- 댓글, 가사 -->
-<div class="row" style="border:1px solid black;">
-    <div class="music-comment" style="border:1px solid black;">
+<div class="row" >
+    <div class="music-comment" >
         <div class="panel panel-default comment-panel">
           <div class="panel-body comment-body">
             <h4>감상평을 남겨주세요 !</h4>
@@ -50,6 +47,9 @@
             <tr>
                 <th>
                     <%= form_tag("/category/s_comment_create/#{@show.id}", method: "post") do %>
+                    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                    <input type="hidden" name="user_name" value="<%= current_user.name %>">
+                    <input type="hidden" name="avatar" value="<%= current_user.avatar.thumb.url %>">
                     <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
                     <%= submit_tag "Comment", class: 'btn btn-default history-profile-edit btn-comment-submit'%>
                     <% end %>
@@ -61,15 +61,19 @@
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">
-                          <img class="media-object img-circle" src="http://via.placeholder.com/50x50" alt="프로필사진">
+                        <% unless s.avatar.nil? %>
+                            <div class="card-image"><img width="70" height="70" class="media-object img-circle" src="<%= s.avatar %>" alt="프로필사진"></div> 
+                        <% else %>
+                            <div><img src="http://via.placeholder.com/70x70" width="70" height="70" alt="프로필없음" class="img-circle"></div>
+                        <% end %>
                         </a>
                       </div>
                       <div class="media-body comment-list">
-                        <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
-                        <span class="comment-day" style="border:1px solid black;">17.08.08</span>
-                        <div class="comment-wrap" style="border:1px solid black;">
-                            <p class="comment-content" style="border:1px solid black;"><%=s.content%></p>
-                            <div class="comment-button" style="border:1px solid black;">
+                        <span class="comment-writer" ><%= s.user_name %></span>
+                        <span class="comment-day" ><%= s.updated_at %></span>
+                        <div class="comment-wrap" >
+                            <p class="comment-content" ><%=s.content%></p>
+                            <div class="comment-button" >
                                 <a href="/category/s_comment_destroy/<%= s.id %>">삭제</a>
                             </div>
                         </div>
@@ -82,9 +86,9 @@
           </table>
         </div>
     </div>
-    <div class="music-lyrics" style="border:1px solid black;">
+    <div class="music-lyrics" >
         <div class="panel panel-default lyrics-panel">
-          <div class="panel-heading">가사말고 모하지?</div>
+          <div class="panel-heading">미정</div>
           <div class="panel-body lyrics-body">
             <pre class="lyrics-content">
 

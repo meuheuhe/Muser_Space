@@ -1,6 +1,6 @@
 <div class="row first_row">
     <div class="player-container">
-        <div class="coverImageBackground" style="background-image: url('/assets/thumbimg.jpg');"></div>
+        <div class="coverImageBackground" style="background-image: url('<%= @cover.cover_pic %>');"></div>
         <div class="centeredPlayerWrapper">
             <div class="musicBoxCentered">
                 <div class="musicInfo">
@@ -10,15 +10,13 @@
                      <div class="musicButtonField">
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>-->
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>-->
-                        <div class="musicButtonHeart">
-                                 <% if current_user.like2?(@cover) %>
-                                     <a href="/like2_cancel/<%= @cover.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                        <% if current_user.like2?(@cover) %>
+                                     <a href="/like2_cancel/<%= @cover.id %>">
+                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @cover.like2s.size %></span></div></a>
                                  <% else %>
-                                     <a href="/like2/<%= @cover.id %>"><span class="glyphicon glyphicon-heart heart-ch1"></span></a>
+                                     <a href="/like2/<%= @cover.id %>">
+                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @cover.like2s.size %></span></div></a>
                                  <% end %>
-                             
-                             <span class="heart-ch2"><%= @cover.like2s.size %></span>
-                        </div>
                          <div class="musicButtonMyMuser">My뮤저</div>
                      </div>
                      <div class="musicContent">
@@ -26,10 +24,9 @@
                      </div>
                 </div>
 
-            <!--<img class="coverImageBig" src="/assets/album.jpg">-->
                 <div class="show-video-wrap">
-                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}">
-                        <source src="/assets/examplevideo.mp4" type='video/mp4'>
+                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}" poster="<%= @cover.cover_pic %>">
+                        <source src="<%= @cover.cover_mic%>" type='video/mp4'>
                         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
                     </video>    
                 </div>
@@ -39,8 +36,8 @@
 </div>
 
 <!-- 댓글, 가사 -->
-<div class="row" style="border:1px solid black;">
-    <div class="music-comment" style="border:1px solid black;">
+<div class="row">
+    <div class="music-comment">
         <div class="panel panel-default comment-panel">
           <div class="panel-body comment-body">
             <h4>감상평을 남겨주세요 !</h4>
@@ -50,6 +47,9 @@
             <tr>
                 <th>
                     <%= form_tag("/category/c_comment_create/#{@cover.id}", method: "post") do %>
+                    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+                    <input type="hidden" name="user_name" value="<%= current_user.name %>">
+                    <input type="hidden" name="avatar" value="<%= current_user.avatar.thumb.url %>">
                     <%= text_area_tag :content, nil, class: 'form-control comment-text', placeholder: "댓글을 달아주세요" %>
                     <%= submit_tag "Comment", class: 'btn btn-default history-profile-edit btn-comment-submit'%>
                     <% end %>
@@ -61,16 +61,20 @@
                     <div class="media comment-list-media">
                       <div class="media-left media-middle">
                         <a href="#">
-                          <img class="media-object img-circle" src="http://via.placeholder.com/50x50" alt="프로필사진">
+                        <% unless c.avatar.nil? %>
+                            <div class="card-image"><img width="70" height="70" class="media-object img-circle" src="<%= c.avatar %>" alt="프로필사진"></div> 
+                        <% else %>
+                            <div><img src="http://via.placeholder.com/70x70" width="70" height="70" alt="프로필없음" class="img-circle"></div>
+                        <% end %>
                         </a>
                       </div>
                       <div class="media-body comment-list">
                            
-                        <span class="comment-writer" style="border:1px solid black;">by댓쓴이</span>
-                        <span class="comment-day" style="border:1px solid black;">17.08.08</span>
-                        <div class="comment-wrap" style="border:1px solid black;">
-                            <p class="comment-content" style="border:1px solid black;"><%= c.content%></p>
-                            <div class="comment-button" style="border:1px solid black;">
+                        <span class="comment-writer"><%= c.user_name %></span>
+                        <span class="comment-day"><%= c.updated_at %></span>
+                        <div class="comment-wrap">
+                            <p class="comment-content"><%= c.content%></p>
+                            <div class="comment-button">
                                 <a href="/category/c_comment_destroy/<%= c.id %>">삭제</a>
                             
                             </div>
@@ -83,7 +87,7 @@
           </table>
         </div>
     </div>
-    <div class="music-lyrics" style="border:1px solid black;">
+    <div class="music-lyrics">
         <div class="panel panel-default lyrics-panel">
           <div class="panel-heading">가사</div>
           <div class="panel-body lyrics-body">

@@ -37,14 +37,20 @@
                                 <div class="thumbnail">
                                   <a href="javascript:popupOpen();">
                                       <div class="list-img-wrap">
-                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <img src="<%= s.album_pic %>" alt="앨범이미지">
                                           <div>
                                               <i class="fa fa-music fa-2x" aria-hidden="true"></i>
                                           </div>
                                       </div>
                                   </a>
                                   <div class="caption">
-                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", songwriting_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                      </p>
                                   </div>
                                 </div>
                               </div>
@@ -61,14 +67,20 @@
                                 <div class="thumbnail">
                                   <a href="javascript:popupOpen();">
                                       <div class="list-img-wrap">
-                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <img src="<%= s.album_pic %>" alt="앨범이미지">
                                           <div>
                                               <i class="fa fa-music fa-2x" aria-hidden="true"></i>
                                           </div>
                                       </div>
                                   </a>
                                   <div class="caption">
-                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", songwriting_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -86,14 +98,20 @@
                                 <div class="thumbnail">
                                   <a href="javascript:popupOpen();">
                                       <div class="list-img-wrap">
-                                          <img src="http://via.placeholder.com/170x170" alt="앨범이미지">
+                                          <img src="<%= s.album_pic %>" alt="앨범이미지">
                                           <div>
                                               <i class="fa fa-music fa-2x" aria-hidden="true"></i>
                                           </div>
                                       </div>
                                   </a>
                                   <div class="caption">
-                                    <p><%= link_to "#{s.title}", songwriting_path(s.id) %></p>
+                                    <p>
+                                    <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", songwriting_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -139,7 +157,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.cover_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -147,7 +165,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%=s.title %></a></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", cover_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -167,7 +191,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.cover_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -175,7 +199,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%= s.title %></a></p>
+                                    <p>                                      
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", cover_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -196,7 +226,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.cover_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -204,7 +234,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=cover_path(s.id)%>" class="list-title"><%= s.title %></a></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", cover_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -251,7 +287,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.show_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -259,7 +295,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", show_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -279,7 +321,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.show_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -287,7 +329,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", show_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>                                      
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -308,7 +356,7 @@
                                       <ul class="list-unstyled video-list-thumbs row">
                                       	<li class="col-12">
                                       		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                      			<img src="<%= s.show_pic %>" alt="Barca" class="img-responsive" height="130px" />
                                       			<span class="glyphicon glyphicon-play"></span>
                                       			<span class="duration">03:15</span>
                                       		</a>
@@ -316,7 +364,13 @@
                                       </ul>
                                     </div>
                                   <div class="caption">
-                                    <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %></a></p>
+                                    <p>
+                                      <% if user_signed_in? %>
+                                        <%= link_to "#{s.title}", show_path(s.id), class: "list-title" %>
+                                      <% elsif %>
+                                        <a href="javascript:alert('로그인을 해주세요');" class="list-title"><%=s.title%></a>
+                                      <% end %>                                      
+                                    </p>
                                   </div>
                                 </div> 
                               </div>
@@ -351,7 +405,7 @@
         뮤즈 차트
       </h1>
       <div class="header-detail">
-        <a href="">더보기
+        <a href="/muserchart/index">더보기
         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
         </a>
       </div>
@@ -381,9 +435,14 @@
           <td class="td-1"><a href=""><%= index+1 %></a></td>
           <td class="td-2">
             <% if index==0 %>
-            <a href=""><img src="http://via.placeholder.com/70x70" alt="앨범이미지"></a>
+            <a href=""><img src="<%= p.album_pic %>" alt="앨범이미지"></a>
             <% end %>
-            <a href="category/songwriting_info"><%= p.title %></a></td>
+            <% if user_signed_in? %>
+              <a href="category/songwriting_info"><%= p.title %></a>
+            <% elsif %>
+              <a href="javascript:alert('로그인을 해주세요');"><%=p.title%></a>
+            <% end %>            
+          </td>
           <td class="td-3"><a href=""><%= p.user_name%></a></td>
           <td class="td-4">
             <a href="javascript:popupOpen();"><span class="glyphicon glyphicon-play mini-list"></span></a>
@@ -412,7 +471,7 @@
         <% @s_chart.each_with_index do |p, index| %>
       	<li class="col-12 col-lg-6">
       		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-      			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+      			<img src="<%= p.show_pic %>" alt="Barca" class="img-responsive" height="130px" />
       			<h2><%= p.title %></h2>
       			<h2 class="h2-sec"><%= p.user_name %></h2>
       			<span class="glyphicon glyphicon-play"></span>

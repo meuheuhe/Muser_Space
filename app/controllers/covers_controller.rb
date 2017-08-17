@@ -1,8 +1,17 @@
 class CoversController < ApplicationController
   def create
-    Cover.create(title: params[:cover][:title], content: params[:cover][:content],
+    file_pic = params[:cover][:cover_pic]
+    uploader_pic = CoverPicUploader.new
+    uploader_pic.store!(file_pic)
+    
+    file_mic = params[:cover][:cover_mic]
+    uploader_mic = CoverMicUploader.new
+    uploader_mic.store!(file_mic)
+    
+    
+    Cover.create(title: params[:cover][:title], content: params[:cover][:content], original: params[:cover][:original], lyrics: params[:cover][:lyrics],
                        user_id: params[:user_id], user_name: params[:user_name],
-                       user_email: params[:user_email])
+                       user_email: params[:user_email], cover_pic: uploader_pic.url,  cover_mic: uploader_mic.url)
     redirect_to '/'
   end
 

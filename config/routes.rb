@@ -28,10 +28,10 @@ Rails.application.routes.draw do
   get 'home/upload'
 
   # main-category
-  get 'category/songwriting'
+  get 'category/songwriting/:genre' => 'category#songwriting'
   get 'category/cover'
   get 'category/show'
-  get 'category/songwriting_view'
+  get 'category/songwriting_view/:id' => 'category#songwriting_view'
   get 'category/songwriting_info'
   
 

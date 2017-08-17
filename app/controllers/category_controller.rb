@@ -5,7 +5,24 @@ class CategoryController < ApplicationController
     
 
   def songwriting
-    @songwriting = Songwriting.all.order('created_at DESC')
+    @genre = params[:genre]
+    if @genre == 'genre1'
+      genre_name = '발라드/댄스/팝'
+    elsif @genre == 'genre2'
+      genre_name = '힙합/알앤비'
+    elsif @genre == 'genre3'
+      genre_name = '일렉트로닉'
+    elsif @genre == 'genre4'
+      genre_name = '락/메탈'
+    elsif @genre == 'genre5'
+      genre_name = '재즈'
+    elsif @genre == 'genre6'
+      genre_name = '인디'
+    end
+    @songwriting = Songwriting.where(genre: genre_name).order('created_at DESC')
+    if @genre == 'all'
+      @songwriting = Songwriting.all.order('created_at DESC')
+    end
   end
 
   def cover
@@ -19,6 +36,7 @@ class CategoryController < ApplicationController
   end
   
   def songwriting_view
+    @songwriting = Songwriting.find(params[:id])
     render :layout => 'newlayout'
 
   end
@@ -36,7 +54,7 @@ class CategoryController < ApplicationController
   end
   
   def sw_comment_create
-    @comment= SwComment.create(songwriting_id: params[:songwriting_id], content: params[:content]) 
+    @comment= SwComment.create(songwriting_id: params[:songwriting_id], user_id: params[:user_id], user_name: params[:user_name], content: params[:content], avatar: params[:avatar]) 
     redirect_to :back
   end
   
@@ -47,7 +65,7 @@ class CategoryController < ApplicationController
   end
   
   def c_comment_create
-    @comment= CComment.create(cover_id: params[:cover_id], content: params[:content]) 
+    @comment= CComment.create(cover_id: params[:cover_id], user_id: params[:user_id], user_name: params[:user_name], content: params[:content], avatar: params[:avatar]) 
     redirect_to :back
   end
   
@@ -58,7 +76,7 @@ class CategoryController < ApplicationController
   end
   
   def s_comment_create
-    @comment= SComment.create(show_id: params[:show_id], content: params[:content]) 
+    @comment= SComment.create(show_id: params[:show_id], user_id: params[:user_id], user_name: params[:user_name], content: params[:content], avatar: params[:avatar]) 
     redirect_to :back
   end
   

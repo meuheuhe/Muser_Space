@@ -1,5 +1,5 @@
 class Like2 < ActiveRecord::Base
-    belongs_to :Cover
+    belongs_to :cover
     belongs_to :user
 
 

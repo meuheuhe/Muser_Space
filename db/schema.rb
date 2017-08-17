@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170814102751) do
 
   create_table "c_comments", force: :cascade do |t|
     t.string   "content"
+    t.string   "user_name"
     t.integer  "user_id"
     t.integer  "cover_id"
     t.datetime "created_at", null: false
@@ -22,11 +23,12 @@ ActiveRecord::Schema.define(version: 20170814102751) do
   end
 
   create_table "covers", force: :cascade do |t|
-    t.string   "album_pic"
-    t.string   "music"
+    t.string   "cover_pic"
+    t.string   "cover_mic"
     t.string   "title"
     t.text     "content"
-    t.string   "genre"
+    t.string   "original"
+    t.string   "lyrics"
     t.integer  "user_id"
     t.string   "user_email"
     t.string   "user_name"
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170814102751) do
 
   create_table "s_comments", force: :cascade do |t|
     t.string   "content"
+    t.string   "user_name"
     t.integer  "user_id"
     t.integer  "show_id"
     t.datetime "created_at", null: false
@@ -93,11 +96,11 @@ ActiveRecord::Schema.define(version: 20170814102751) do
   end
 
   create_table "shows", force: :cascade do |t|
-    t.string   "album_pic"
-    t.string   "music"
+    t.string   "show_pic"
+    t.string   "show_mic"
     t.string   "title"
     t.text     "content"
-    t.string   "genre"
+    t.string   "teamname"
     t.integer  "user_id"
     t.string   "user_email"
     t.string   "user_name"
@@ -125,7 +128,9 @@ ActiveRecord::Schema.define(version: 20170814102751) do
 
   create_table "sw_comments", force: :cascade do |t|
     t.string   "content"
+    t.string   "user_name"
     t.integer  "user_id"
+    t.string   "avatar"
     t.integer  "songwriting_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

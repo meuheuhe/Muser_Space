@@ -1,12 +1,12 @@
 class CreateShows < ActiveRecord::Migration
   def change
     create_table :shows do |t|
-      t.string :album_pic
-      t.string :music
+      t.string :show_pic
+      t.string :show_mic
       
       t.string :title
       t.text :content
-      t.string :genre
+      t.string :teamname
       
       #계정
       t.integer :user_id

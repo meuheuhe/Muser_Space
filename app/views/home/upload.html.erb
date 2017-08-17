@@ -22,18 +22,18 @@
               <div>
                 <h2>창작 업로드</h2>
                 <div>
-                <%= form_for @songwriting do |f| %> 
+                <%= form_for @songwriting, multipart: true do |f| %> 
                 <input type="hidden" name="user_id" value="<%= current_user.id %>">
                 <input type="hidden" name="user_email" value="<%= current_user.email %>">
                 <input type="hidden" name="user_name" value="<%= current_user.name %>">
                   
                   <div class="field field_style">
                     <%= f.label :album_pic %><br />
-                    <%= f.file_field :album_pic %>
+                    <%= f.file_field :album_pic, accept: "image/*" %>
                   </div>
                   <div class="field field_style">
                     <%= f.label :music %><br />
-                    <%= f.file_field :music %>
+                    <%= f.file_field :music, accept: "audio/*" %>
                   </div>
                   <div class="field field_style">
                     <%= f.label :name %><br />
@@ -66,17 +66,34 @@
               <div>
                 <h2>커버 업로드</h2>
                 <div>
-                <%= form_for @cover do |f| %>
+                <%= form_for @cover, multipart: true do |f| %>
                 <input type="hidden" name="user_id" value="<%= current_user.id %>">
                 <input type="hidden" name="user_email" value="<%= current_user.email %>">
                 <input type="hidden" name="user_name" value="<%= current_user.name %>">
+                  <div class="field field_style">
+                    <%= f.label :cover_pic%><br />
+                    <%= f.file_field :cover_pic, accept: "image/*"  %>
+                  </div>
+                  <div class="field field_style">
+                    <%= f.label :cover_mic%><br />
+                    <%= f.file_field :cover_mic, accept: "video/*"  %>
+                  </div>
                   <div class="field field_style">
                     <%= f.label :name %><br />
                     <%= f.text_field :title %>
                   </div>
                   <div class="field field_style">
+                    <%= f.label :original %><br />
+                    <%= f.text_field :original %>
+                  </div>
+                  <div class="field field_style">
                     <%= f.label :content %><br />
                     <%= f.text_area :content %>
+                  </div>
+
+                  <div class="field field_style">
+                    <%= f.label :lyrics %><br />
+                    <%= f.text_area :lyrics %>
                   </div>
                   <div class="actions field_style">
                     <%= f.submit "Upload" %>
@@ -92,13 +109,25 @@
               <div>
                 <h2>공연 업로드</h2>
                 <div>
-                <%= form_for @show do |f| %>
+                <%= form_for @show, multipart: true do |f| %>
                 <input type="hidden" name="user_id" value="<%= current_user.id %>">
                 <input type="hidden" name="user_email" value="<%= current_user.email %>">
                 <input type="hidden" name="user_name" value="<%= current_user.name %>">
                   <div class="field field_style">
+                    <%= f.label :show_pic%><br />
+                    <%= f.file_field :show_pic, accept: 'image/*'  %>
+                  </div>
+                  <div class="field field_style">
+                    <%= f.label :show_mic%><br />
+                    <%= f.file_field :show_mic, accept: 'video/*'  %>
+                  </div>
+                  <div class="field field_style">
                     <%= f.label :name %><br />
                     <%= f.text_field :title %>
+                  </div>  
+                  <div class="field field_style">
+                    <%= f.label :teamname %><br />
+                    <%= f.text_field :teamname %>
                   </div>
                   <div class="field field_style">
                     <%= f.label :content %><br />

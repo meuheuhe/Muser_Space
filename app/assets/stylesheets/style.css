@@ -390,6 +390,7 @@ body {
     font-size: 1.2em;
 }
 .musicButtonHeart .heart-ch2 {
+    color:white;
     display:inline-block;
     padding-left:2px;
     position:relative;
@@ -398,6 +399,9 @@ body {
 .musicButtonHeart .heart-ch2 a {
     text-decoration: none;
     color:white;
+}
+.musicButtonHeart .dislike {
+ color: white !important;   
 }
 .coverImageBig {
     border-style: none;
@@ -619,4 +623,9 @@ body {
 }
 .result-wrap span {
     color: #8e44ad;
+}
+
+.video-img {
+    height: 160px !important;
+    width: 280px;
 }
