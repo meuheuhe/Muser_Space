@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get 'history/myheart'
   get 'mymuser/index'
   get 'mymusic/index'
+  
 
 
   devise_for :users

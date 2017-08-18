@@ -14,7 +14,11 @@
                     <ul class="list-unstyled video-list-thumbs row">
                     	<li class="col-12">
                     		<a href="<%=show_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" />
+                    		<% unless s.show_pic.nil? %>
+                    			<img src="<%= s.show_pic %>" alt="Barca" class="img-responsive video-img" width="280" height="160" />
+                    		<% else %>
+                    			<img src="http://via.placeholder.com/280x160" alt="Barca" class="img-responsive video-img" width="280" height="160" />
+                    		<% end %>
                     			<span class="glyphicon glyphicon-play"></span>
                     			<span class="duration">03:15</span>
                     		</a>
@@ -28,14 +32,17 @@
                     <!--<li><a href="" class="glyphicon glyphicon-plus"></a></li>-->
                     <li><%= link_to '', show_path(s.id), class: "glyphicon glyphicon-list-alt" %></li>
                     <!--<li><a href="/category/songwriting_info" class="glyphicon glyphicon-list-alt"></a></li>-->
-                    <li><a href="" class="glyphicon glyphicon-heart"></a></li>
+                    <li>
+                      <% if current_user.like3?(s) %>
+                        <a href="/like3_cancel/<%= s.id %>" class="glyphicon glyphicon-heart category-like"></a>
+                      <% else %>
+                        <a href="/like3/<%= s.id %>" class="glyphicon glyphicon-heart"></a>
+                      <% end %>
+                    </li>
                   </ul>
                   <p><a href="#" class="list-title"><%= s.title %><!--제목--></a></p>
-                  <p><a href="#" class="list-singer"><%= s.content %><!--가수--></a></p>
-                  <p class="list-day">날짜/시간
-                                    <%= "#{s.unique_impression_count}" %>
-
-                  </p>
+                  <p><a href="#" class="list-singer"><%= s.teamname %><!--가수--></a></p>
+                  <p class="list-day"><%= s.updated_at %></p>
                 </div>
               </div> 
             </div>

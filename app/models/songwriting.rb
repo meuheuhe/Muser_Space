@@ -1,4 +1,5 @@
 class Songwriting < ActiveRecord::Base
+  has_many :playlists
   has_many :likes
   belongs_to :user
   has_many :sw_comments
@@ -13,6 +14,8 @@ class Songwriting < ActiveRecord::Base
         # so getting keys from the hash and calculating the number of keys
         impressions.group(:ip_address).size.keys.length #TESTED
     end
+    
+    
 
 
 end

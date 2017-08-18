@@ -8,7 +8,7 @@ class ShowsController < ApplicationController
     uploader_mic = ShowMicUploader.new
     uploader_mic.store!(file_mic)
   
-    Show.create(title: params[:show][:title], content: params[:show][:content],
+    Show.create(title: params[:show][:title], content: params[:show][:content], teamname: params[:show][:teamname],
                        user_id: params[:user_id], user_name: params[:user_name],
                        user_email: params[:user_email], show_pic: uploader_pic.url, show_mic: uploader_mic.url)
     redirect_to '/'

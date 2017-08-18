@@ -14,7 +14,11 @@
                     <ul class="list-unstyled video-list-thumbs row">
                     	<li class="col-12">
                     		<a href="<%=cover_path(s.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                    		<% unless s.cover_pic.nil? %>
                     			<img src="<%= s.cover_pic %>" alt="Barca" class="img-responsive video-img" width="280" height="160" />
+                    		<% else %>
+                    			<img src="http://via.placeholder.com/280x160" alt="Barca" class="img-responsive video-img" width="280" height="160" />
+                    		<% end %>
                     			<span class="glyphicon glyphicon-play"></span>
                     			<span class="duration">03:15</span>
                     		</a>
@@ -28,7 +32,13 @@
                     <!--<li><a href="" class="glyphicon glyphicon-plus"></a></li>-->
                     <li><%= link_to '', cover_path(s.id), class: "glyphicon glyphicon-list-alt" %></li>
                     <!--<li><a href="/category/songwriting_info" class="glyphicon glyphicon-list-alt"></a></li>-->
-                    <li><a href="" class="glyphicon glyphicon-heart"></a></li>
+                    <li>
+                      <% if current_user.like2?(s) %>
+                        <a href="/like2_cancel/<%= s.id %>" class="glyphicon glyphicon-heart category-like"></a>
+                      <% else %>
+                        <a href="/like2/<%= s.id %>" class="glyphicon glyphicon-heart"></a>
+                      <% end %>
+                    </li>
                   </ul>
                   <p><a href="#" class="list-title"><%= s.title %><!--제목--></a></p>
                   <p><a href="#" class="list-singer"><%= s.user_name %><!--가수--></a></p>

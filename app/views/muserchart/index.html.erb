@@ -26,15 +26,15 @@
                   <% num = 1 %>
                   <% @sw_chart.each do |p| %>
                     <tr>
-                      <td class="td-1"><a href=""><%= num %></a></td>
+                      <td class="td-1"><%= num %></td>
                       <td class="td-2">
                         <% if num==1 %>
-                        <a href=""><img src="http://via.placeholder.com/70x70" alt="앨범이미지"></a>
+                        <%= link_to image_tag("#{p.album_pic}", alt: "앨범커버없음"), songwriting_path(p.id) %>
                         <% end %>
-                        <a href="category/songwriting_info"><%= p.title %></a></td>
-                      <td class="td-3"><a href=""><%= p.content %></a></td>
+                        <%= link_to p.title, songwriting_path(p.id) %></td>
+                      <td class="td-3"><a href=""><%= p.user_name %></a></td>
                       <td class="td-4">
-                        <a href="javascript:popupOpen();"><span class="glyphicon glyphicon-play mini-list"></span></a>
+                        <a href="javascript:popupOpen('<%=p.id%>');"><span class="glyphicon glyphicon-play mini-list"></span></a>
                         <a href=""><span class="glyphicon glyphicon-plus mini-list"></span></a>
                       </td>
                     </tr>
@@ -55,15 +55,15 @@
                   <% num = 1 %>
                   <% @c_chart.each do |p| %>
                     <tr>
-                      <td class="td-1"><a href=""><%= num %></a></td>
+                      <td class="td-1"><%= num %></td>
                       <td class="td-2">
                         <% if num==1 %>
-                        <a href=""><img src="http://via.placeholder.com/70x70" alt="앨범이미지"></a>
+                        <%= link_to image_tag("#{p.cover_pic}", alt: "앨범커버없음"), cover_path(p.id) %>
                         <% end %>
-                        <a href="category/songwriting_info"><%= p.title %></a></td>
-                      <td class="td-3"><a href=""><%= p.content %></a></td>
+                        <%= link_to p.title, cover_path(p.id) %></td>
+                      <td class="td-3"><a href=""><%= p.user_name %></a></td>
                       <td class="td-4">
-                        <a href="javascript:popupOpen();"><span class="glyphicon glyphicon-play mini-list"></span></a>
+                        <a href="/covers/<%= p.id %>"><span class="glyphicon glyphicon-play mini-list"></span></a>
                         <a href=""><span class="glyphicon glyphicon-plus mini-list"></span></a>
                       </td>
                     </tr>
@@ -84,15 +84,15 @@
                   <% num = 1 %>
                   <% @s_chart.each do |p| %>
                     <tr>
-                      <td class="td-1"><a href=""><%= num %></a></td>
+                      <td class="td-1"><%= num %></td>
                       <td class="td-2">
                         <% if num==1 %>
-                        <a href=""><img src="http://via.placeholder.com/70x70" alt="앨범이미지"></a>
+                        <%= link_to image_tag("#{p.show_pic}", alt: "앨범커버없음"), show_path(p.id) %>
                         <% end %>
-                        <a href="category/songwriting_info"><%= p.title %></a></td>
-                      <td class="td-3"><a href=""><%= p.content %></a></td>
+                        <%= link_to p.title, show_path(p.id) %></td>
+                      <td class="td-3"><a href=""><%= p.user_name %></a></td>
                       <td class="td-4">
-                        <a href="javascript:popupOpen();"><span class="glyphicon glyphicon-play mini-list"></span></a>
+                        <a href="/shows/<%= p.id %>"><span class="glyphicon glyphicon-play mini-list"></span></a>
                         <a href=""><span class="glyphicon glyphicon-plus mini-list"></span></a>
                       </td>
                     </tr>

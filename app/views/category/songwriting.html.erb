@@ -21,9 +21,13 @@
             <div class="thumbnail">
               <a href="javascript:popupOpen('<%=s.id%>');">
                   <div class="list-img-wrap">
+                    <% unless s.album_pic.nil? %>
                       <img src="<%= s.album_pic %>" width="170" height="170" alt="앨범이미지">
+                    <% else %>
+                      <img src="http://via.placeholder.com/170x170" width="170" height="170" alt="앨범이미지">
+                    <% end %>
                       <div>
-                          <i class="fa fa-music fa-2x" aria-hidden="true"></i>
+                          <i class="fa fa-music fa-2x play-icon" aria-hidden="true"></i>
                       </div>
                   </div>
               </a>
@@ -34,7 +38,7 @@
                   <li><%= link_to '', songwriting_path(s.id), class: "glyphicon glyphicon-list-alt" %></li>
                   <li>
                       <% if current_user.like?(s) %>
-                        <a href="/like_cancel/<%= s.id %>" class="glyphicon glyphicon-heart like"></a>
+                        <a href="/like_cancel/<%= s.id %>" class="glyphicon glyphicon-heart category-like"></a>
                       <% else %>
                         <a href="/like/<%= s.id %>" class="glyphicon glyphicon-heart"></a>
                       <% end %>

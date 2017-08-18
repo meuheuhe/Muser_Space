@@ -1,15 +1,15 @@
 var winRef
+
 function popupOpen(s){
     if(winRef == null){
-        winRef = window.opener.location.reload('/category/songwriting_view/'+s, 'popupName', 'width=800,height=400, resizable=no, scrollbars=no, status=no, toolbar = no, directories = no, location=no');
+        winRef = window.open('/category/songwriting_view/'+s, 'popupName', 'width=800,height=400, resizable=no, scrollbars=no, status=no, toolbar = no, directories = no, location=no');
     }else{
         if (winRef.closed == false) {
-            winRef.focus();
-        }else{
-            winRef = window.opener.location.reload('/category/songwriting_view/'+s, 'popupName', 'width=800,height=400, resizable=no, scrollbars=no, status=no, toolbar = no, directories = no, location=no');
+            winRef = window.open('/category/songwriting_view/'+s, 'popupName', 'width=800,height=400,resizable=no, scrollbars=no, status=no, toolbar = no, directories = no, location=no');        }else{
         }
     }
 }
+    
 // $(document).ready(function() { 
 
 //      var vid = $("popupOpen").get(0);//변수 vid에 video 태그 저장 

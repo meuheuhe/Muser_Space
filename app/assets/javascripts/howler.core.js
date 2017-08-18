@@ -510,7 +510,7 @@
       if (self._autoplay) {
         self._queue.push({
           event: 'play',
-          action: function() {
+          action: function(ture) {
             self.play();
           }
         });

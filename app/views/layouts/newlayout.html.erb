@@ -375,9 +375,9 @@ body {
   </div>
 
   <!-- Scripts -->
-  <script src="../../src/howler.core.js"></script>
-  <script src="./siriwave.js"></script>
-  <script src="./player.js"></script>
+  <!--<script src="../../src/howler.core.js"></script>-->
+  <!--<script src="./siriwave.js"></script>-->
+  <!--<script src="./player.js"></script>-->
   <!-- Scripts -->
   <!--<script src="javascripts/howler.core.js"></script>-->
   <!--<script src="javascripts/siriwave.js"></script>-->
@@ -662,7 +662,10 @@ var player = new Player([
 
 // Bind our player controls.
 playBtn.addEventListener('click', function() {
+  
   player.play();
+  
+  
 });
 pauseBtn.addEventListener('click', function() {
   player.pause();

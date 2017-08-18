@@ -5,8 +5,8 @@
             <div class="musicBoxCentered">
                 <div class="musicInfo">
             
-                    <div id="d1_trackNameLabel" class="musicTrackName">커버제목</div>
-                    <div id="d1_artistLabel" class="musicTrackArtist">커버자</div>
+                    <div id="d1_trackNameLabel" class="musicTrackName"><%=@cover.title %></div>
+                    <div id="d1_artistLabel" class="musicTrackArtist"><%=@cover.user_name%></div>
                      <div class="musicButtonField">
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-music"></span></div>-->
                          <!--<div class="musicButtonAdd"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;리스트 추가...</div>-->
@@ -15,12 +15,12 @@
                                          <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @cover.like2s.size %></span></div></a>
                                  <% else %>
                                      <a href="/like2/<%= @cover.id %>">
-                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1"></span><span class="heart-ch2"><%= @cover.like2s.size %></span></div></a>
+                                         <div class="musicButtonHeart"><span class="glyphicon glyphicon-heart heart-ch1 dislike"></span><span class="heart-ch2"><%= @cover.like2s.size %></span></div></a>
                                  <% end %>
                          <div class="musicButtonMyMuser">My뮤저</div>
                      </div>
                      <div class="musicContent">
-                         <p>커버곡들어주세용</p>
+                         <p><%= @cover.content %></p>
                      </div>
                 </div>
 
@@ -64,13 +64,13 @@
                         <% unless c.avatar.nil? %>
                             <div class="card-image"><img width="70" height="70" class="media-object img-circle" src="<%= c.avatar %>" alt="프로필사진"></div> 
                         <% else %>
-                            <div><img src="http://via.placeholder.com/70x70" width="70" height="70" alt="프로필없음" class="img-circle"></div>
+                            <div class="card-image"><img src="http://via.placeholder.com/70x70" width="70" height="70" alt="프로필없음" class="img-circle"></div>
                         <% end %>
                         </a>
                       </div>
                       <div class="media-body comment-list">
                            
-                        <span class="comment-writer"><%= c.user_name %></span>
+                        <span class="comment-writer"><%= c.user_name %> 님의 댓글</span>
                         <span class="comment-day"><%= c.updated_at %></span>
                         <div class="comment-wrap">
                             <p class="comment-content"><%= c.content%></p>
