@@ -1,6 +1,11 @@
 <div class="row first_row">
     <div class="player-container">
-        <div class="coverImageBackground" style="background-image: url('<%=@songwriting.album_pic%>');"></div>
+        <% unless @songwriting.album_pic.nil? %>
+            <div class="coverImageBackground" style="background-image: url('<%=@songwriting.album_pic%>');"></div>
+        <% else %>
+            <div class="coverImageBackground" style="background-image: url('http://via.placeholder.com/300X300');"></div>
+        <% end %>
+        
         <div class="centeredPlayerWrapper">
             <div class="musicBoxCentered">
                 <div class="musicInfo">
@@ -29,7 +34,11 @@
                          <p><%= @songwriting.content %></p>
                      </div>
                 </div>
-            <img class="coverImageBig" src="<%=@songwriting.album_pic%>">
+            <% unless @songwriting.album_pic.nil? %>
+                <img class="coverImageBig" src="<%=@songwriting.album_pic%>" width="300" height="300">
+            <% else %>
+                <img class="coverImageBig" src="http://via.placeholder.com/300X300" width="300" height="300">
+            <% end %>
             </div>
         </div>
     </div>

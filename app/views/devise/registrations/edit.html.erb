@@ -6,7 +6,7 @@
       <%= devise_error_messages! %>
       
       <div class="field field_style">
-        <%= f.label :name %><br />
+        <%= f.label :이름 %><br />
         <%= f.text_field :name, autofocus: true %>
       </div>
       
@@ -40,6 +40,11 @@
       <div class="field field_style">
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+      
+      <div class="field field_style">
+        <%= f.label :자기소개 %><br />
+        <%= f.text_field :content, autofocus: true %>
       </div>
     
       <div class="actions field_style">

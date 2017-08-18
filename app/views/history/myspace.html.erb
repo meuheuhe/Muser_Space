@@ -1,17 +1,26 @@
+
 <div class="row history-row first_row">
+  
     <div class="history-profile-wrap">
-        <div class="history-profile-img"><img class="img-circle" src='http://via.placeholder.com/150x150' alt='프로필이미지'></div>
+        <div class="history-profile-img">
+            <% unless current_user.avatar.thumb.url.nil? %>
+                <img class="img-circle" src='current_user.avatar.thumb.url' alt='프로필이미지'>
+            <% else %>
+                <img class="img-circle" src='http://via.placeholder.com/150x150' alt='프로필이미지'>
+            <% end %>
+        </div>
         <div class="history-profile-content">
             <div class="content-1">
-                <h1 class="history-profile-nickname">UserNickname</h1>
+                <h1 class="history-profile-nickname"><%= current_user.name%></h1>
                 <a href="/users/edit" class="btn btn-default history-profile-edit">프로필 편집</a>
             </div>
             <ul class="content-2">
-                <li>게시물&nbsp;<span>10</span></li>
+                <li>게시물&nbsp;<span><%= @post_c %></span>
+                </li>
                 <li><a href="">구독한수&nbsp;<span>10</span></a></li>
                 <li><a href="">구독해준수&nbsp;<span>10</span></a></li>
             </ul>
-            <div class="content-3">자기소개</div>
+            <div class="content-3"><%= current_user.content%></div>
         </div>
     </div>
 </div>
@@ -34,75 +43,100 @@
 
 <div class="row history-row">
     <div class="history-profile-wrap">
-        
         <div class="tab-content new-music-content">
             <div role="tabpanel" class="tab-pane active" id="create">
                 <div class="row list">
-                  <% for num in 1..8 %>
+                  
+                <% @songwriting.each do |s|%>
+                <% if s.user_id == current_user.id %>
                     <div class="col-6 col-md-4 col-lg-3">
                       <div class="list-wrap">
                         <div class="thumbnail">
-                          <a href="javascript:popupOpen();"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                          <a href="javascript:popupOpen(<%= s.id %>);">
+                          <% unless s.album_pic.nil? %>
+                              <img src="<%= s.album_pic %>" width="170" height="170" alt="앨범이미지">
+                          <% else %>
+                              <img src="http://via.placeholder.com/170x170" width="170" height="170" alt="앨범이미지">
+                          <% end %>
+                          </a>
                           <div class="caption">
-                            <p><a href="#" class="list-title">제목</a></p>
+                            <p>
+                                <%= link_to "#{s.title}", songwriting_path(s.id), class: "list-title" %>
+                                <!--<a href="#" class="list-title"><%= s.title%></a>-->
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                  <% end %>
-               </div>
+                <%end%>
+                <%end%>
+                
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="cover">
                 <div class="row list">
-                  <% for num in 1..8 %>
+            <% @cover.each do |c|%>
+              <% if c.user_id == current_user.id %>
                     <div class="col-6 col-md-6 col-lg-4">
                       <div class="list-wrap show-list-wrap">
                           <div class="thumbnail">
                               <div class="list-show">
                                 <ul class="list-unstyled video-list-thumbs row">
                                 	<li class="col-12">
-                                		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                		<a href="<%=cover_path(c.id)%>" title="Claudio Bravo, antes su debut con el Barça en la Liga">
+                             		     <% unless c.cover_pic.nil? %>
+                                            <img src="<%= c.cover_pic %>" width="280" height="160" alt="앨범이미지">
+                                          <% else %>
+                                            <img src="http://via.placeholder.com/280X160" width="280" height="160">
+                                          <% end %>
                                 			<span class="glyphicon glyphicon-play"></span>
-                                			<span class="duration">03:15</span>
+                                			<!--<span class="duration"></span>-->
                                 		</a>
                                 	</li>
                                 </ul>
                               </div>
                             <div class="caption">
-                              <p><a href="#" class="list-title">제목</a></p>
+                              <p><a href="<%=cover_path(c.id)%>" class="list-title"><%= c.title %></a></p>
                             </div>
                           </div> 
                         </div>
                       </div>
                     <!--</div>-->
+                  <% end %>
                   <% end %>
                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="show">
                 <div class="row list">
-                  <% for num in 1..8 %>
+                  
+            <% @show.each do |s|%>
+              <% if s.user_id == current_user.id %>
                     <div class="col-6 col-md-6 col-lg-4">
                       <div class="list-wrap show-list-wrap">
                           <div class="thumbnail">
                               <div class="list-show">
                                 <ul class="list-unstyled video-list-thumbs row">
                                 	<li class="col-12">
-                                		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                                	    <a href="<%=show_path(s.id)%>">
+                                		<% unless s.show_pic.nil? %>
+                                            <img src="<%= s.show_pic %>" width="280" height="160" alt="앨범이미지">
+                                          <% else %>
+                                            <img src="http://via.placeholder.com/280X160" width="280" height="160">
+                                          <% end %>
                                 			<span class="glyphicon glyphicon-play"></span>
-                                			<span class="duration">03:15</span>
+                                		<!--<span class="duration"></span>-->
                                 		</a>
                                 	</li>
                                 </ul>
                               </div>
                             <div class="caption">
-                              <p><a href="#" class="list-title">제목</a></p>
+                              <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title%></a></p>
                             </div>
                           </div> 
                         </div>
                       </div>
                     <!--</div>-->
+                  <% end %>
                   <% end %>
                </div>
             </div>

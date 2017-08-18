@@ -25,10 +25,16 @@
                 </div>
 
                 <div class="show-video-wrap">
+                <% unless @cover.cover_pic.nil? %>
                     <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}" poster="<%= @cover.cover_pic %>">
-                        <source src="<%= @cover.cover_mic%>" type='video/mp4'>
-                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-                    </video>    
+                <% else %>
+                    <video id="MY_VIDEO_1" class="video-js vjs-default-skin cover-video" controls preload="auto" width="100%" height="100%" data-setup="{}" poster="http://via.placeholder.com/280X160">
+                <% end %>
+                <% unless @cover.cover_mic.nil? %>
+                    <source src="<%=@cover.cover_mic%>" type='video/mp4'>
+                <% else %>
+                    <source src="" type='video/mp4'>
+                <% end %> 
                 </div>
             </div>
         </div>

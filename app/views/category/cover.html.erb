@@ -40,7 +40,7 @@
                       <% end %>
                     </li>
                   </ul>
-                  <p><a href="#" class="list-title"><%= s.title %><!--제목--></a></p>
+                  <p><a href="<%=cover_path(s.id)%>" class="list-title"><%= s.title %><!--제목--></a></p>
                   <p><a href="#" class="list-singer"><%= s.user_name %><!--가수--></a></p>
                   <p class="list-day"><%= s.updated_at %>
                   <!--<%= "#{s.unique_impression_count}" %>-->

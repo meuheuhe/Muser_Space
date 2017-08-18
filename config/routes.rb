@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'category/cover'
   get 'category/show'
   get 'category/songwriting_view/:id' => 'category#songwriting_view'
+
+
   get 'category/songwriting_info'
   
 

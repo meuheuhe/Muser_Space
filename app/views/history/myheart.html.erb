@@ -1,8 +1,33 @@
-<!--my favorite-->
-<div class="row row_style first_row">
+
+<div class="row history-row first_row">
+  
+    <div class="history-profile-wrap">
+        <div class="history-profile-img">
+            <% unless current_user.avatar.thumb.url.nil? %>
+                <img class="img-circle" src='current_user.avatar.thumb.url' alt='프로필이미지'>
+            <% else %>
+                <img class="img-circle" src='http://via.placeholder.com/150x150' alt='프로필이미지'>
+            <% end %>
+        </div>
+        <div class="history-profile-content">
+            <div class="content-1">
+                <h1 class="history-profile-nickname"><%= current_user.name%></h1>
+                <a href="/users/edit" class="btn btn-default history-profile-edit">프로필 편집</a>
+            </div>
+            <ul class="content-2">
+                <li>게시물&nbsp;<span><%= @post_c %></span>
+                </li>
+                <li><a href="">구독한수&nbsp;<span>10</span></a></li>
+                <li><a href="">구독해준수&nbsp;<span>10</span></a></li>
+            </ul>
+            <div class="content-3"><%= current_user.content%></div>
+        </div>
+    </div>
+</div>
+<div class="row row_style">
  <div class="row-header">
     <h1 class="page-header header_style">
-        My 좋아요
+        My 관심
     </h1>
     <div role="tabpanel">
           <!-- Nav tabs -->
@@ -15,29 +40,35 @@
  </div>
 </div>
 
+
 <div class="row history-row">
     <div class="history-profile-wrap">
-        
         <div class="tab-content new-music-content">
             <div role="tabpanel" class="tab-pane active" id="like_create">
+              
+
                 <div class="row list">
-                  <% for num in 1..8 %>
+                          <% @songwriting_like.each do |s|%>
+
                     <div class="col-6 col-md-4 col-lg-3">
                       <div class="list-wrap">
                         <div class="thumbnail">
-                          <a href="javascript:popupOpen();"><img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                          <a href="javascript:popupOpen('<%= s.id %>');">
+                              <img src="http://via.placeholder.com/170x170" alt="앨범이미지"></a>
+                            <%#= s.title %>
                           <div class="caption">
-                            <p><a href="#" class="list-title">제목</a></p>
+                            <p><a href="#" class="list-title">&nbsp;&nbsp;&nbsp;가수-노래</a></p>
                           </div>
                         </div>
                       </div>
                     </div>
-                  <% end %>
+                  
+               <% end %>
                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="like_cover">
                 <div class="row list">
-                  <% for num in 1..8 %>
+                  <% @cover_like.each do |s|%>
                     <div class="col-6 col-md-6 col-lg-4">
                       <div class="list-wrap show-list-wrap">
                           <div class="thumbnail">
@@ -53,18 +84,19 @@
                                 </ul>
                               </div>
                             <div class="caption">
-                              <p><a href="#" class="list-title">제목</a></p>
+                              <p><a href="#" class="list-title">노래-제목</a></p>
                             </div>
                           </div> 
                         </div>
                       </div>
+                      <% end %>
                     <!--</div>-->
-                  <% end %>
+                  
                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="like_show">
                 <div class="row list">
-                  <% for num in 1..8 %>
+                  <% @show_like.each do |s|%>
                     <div class="col-6 col-md-6 col-lg-4">
                       <div class="list-wrap show-list-wrap">
                           <div class="thumbnail">
@@ -72,15 +104,15 @@
                                 <ul class="list-unstyled video-list-thumbs row">
                                 	<li class="col-12">
                                 		<a href="" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                			<img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
+                            		        <img src="/assets/thumbimg.jpg" alt="Barca" class="img-responsive" height="130px" />
                                 			<span class="glyphicon glyphicon-play"></span>
-                                			<span class="duration">03:15</span>
+                                			<!--<span class="duration">03:15</span>-->
                                 		</a>
                                 	</li>
                                 </ul>
                               </div>
                             <div class="caption">
-                              <p><a href="#" class="list-title">제목</a></p>
+                              <p><a href="#" class="list-title">노래-제목</a></p>
                             </div>
                           </div> 
                         </div>
