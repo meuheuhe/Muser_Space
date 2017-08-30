@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818083132) do
+ActiveRecord::Schema.define(version: 20170814102751) do
 
   create_table "c_comments", force: :cascade do |t|
     t.string   "content"
@@ -85,15 +85,6 @@ ActiveRecord::Schema.define(version: 20170818083132) do
     t.integer  "songwriting_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "playlists", force: :cascade do |t|
-    t.string   "album_pic"
-    t.string   "music"
-    t.string   "title"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "s_comments", force: :cascade do |t|
