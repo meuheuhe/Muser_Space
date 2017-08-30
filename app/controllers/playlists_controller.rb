@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-def playlist_create
+  def playlist_create
     @playlist = Playlist.create(songwriting_id: params[:songwriting_id], user_id: params[:user_id], user_name: params[:user_name], content: params[:content], avatar: params[:avatar]) 
     redirect_to :back
   end

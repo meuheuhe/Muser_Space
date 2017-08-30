@@ -13,9 +13,10 @@ class SongwritingsController < ApplicationController
                        user_email: params[:user_email], album_pic: uploader.url, music: uploader_mic.url)
     
     
-  
+
     redirect_to '/' 
   end
+  
 
   def edit
     @songwriting = Songwriting.find(params[:id])
