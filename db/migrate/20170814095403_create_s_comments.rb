@@ -11,3 +11,4 @@ class CreateSComments < ActiveRecord::Migration
     end
   end
 end
+  
