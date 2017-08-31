@@ -42,7 +42,16 @@
                   </ul>
                   <p><a href="<%=show_path(s.id)%>" class="list-title"><%= s.title %><!--제목--></a></p>
                   <p><a href="#" class="list-singer"><%= s.teamname %><!--가수--></a></p>
-                  <p class="list-day"><%= s.updated_at %></p>
+                  <p class="list-day"><%= s.updated_at %>
+                  <!--<%= "#{s.unique_impression_count}" %>-->
+                  </p>
+                  <% if current_user.id == s.user_id %>
+                    <p>
+                      <%= link_to '수정하기', edit_show_path(s.id) %>
+                      <%= link_to '삭제하기', show_path(s.id), method: "delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
+                    </p>
+                  <% else %>
+                  <% end %>
                 </div>
               </div> 
             </div>
